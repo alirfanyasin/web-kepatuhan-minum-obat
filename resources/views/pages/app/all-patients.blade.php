@@ -29,9 +29,9 @@
               class="text-left px-6 py-4 text-xs font-semibold text-surface-500 uppercase tracking-wider hidden lg:table-cell">
               Kondisi</th>
             <th class="text-left px-6 py-4 text-xs font-semibold text-surface-500 uppercase tracking-wider">Status</th>
-            <th
+            {{-- <th
               class="text-left px-6 py-4 text-xs font-semibold text-surface-500 uppercase tracking-wider hidden sm:table-cell">
-              Progress</th>
+              Progress</th> --}}
             <th
               class="text-left px-6 py-4 text-xs font-semibold text-surface-500 uppercase tracking-wider hidden sm:table-cell">
               Medical Checkup</th>
@@ -53,21 +53,21 @@
                 </div>
               </div>
             </td>
-            <td class="px-6 py-4 text-sm text-surface-500 hidden md:table-cell font-mono">P001</td>
+            <td class="px-6 py-4 text-sm hidden md:table-cell font-mono">P001</td>
             <td class="px-6 py-4 text-sm hidden lg:table-cell">Hipertensi</td>
             <td class="px-6 py-4">
               <span class="inline-flex px-2.5 py-1 rounded-full text-xs font-medium bg-green-100 text-green-800">
                 Aktif
               </span>
             </td>
-            <td class="px-6 py-4 hidden sm:table-cell">
+            {{-- <td class="px-6 py-4 hidden sm:table-cell">
               <div class="flex items-center gap-2">
                 <div class="flex-1 h-1.5 bg-surface-200 dark:bg-surface-700 rounded-full overflow-hidden max-w-[100px]">
                   <div class="h-full bg-medical-500 rounded-full" style="width: 75%"></div>
                 </div>
                 <span class="text-xs font-medium text-surface-500">75%</span>
               </div>
-            </td>
+            </td> --}}
             <td class="px-6 py-4 hidden lg:table-cell">
               <span class="inline-flex px-2.5 py-1 rounded-full text-xs font-medium bg-red-100 text-red-800">
                 Belum Ada
@@ -75,12 +75,12 @@
             </td>
             <td class="px-6 py-4 flex gap-2 justify-end">
               <button onclick="alert('Lihat detail Ahmad Wijaya')"
-                class="w-8 h-8 flex items-center justify-center rounded-lg border border-surface-600  dark:border-surface-800 hover:bg-surface-100 dark:hover:bg-surface-800 transition-colors">
+                class="w-8 h-8 flex items-center justify-center rounded-lg border border-surface-200  dark:border-surface-800 hover:bg-surface-100 dark:hover:bg-surface-800 transition-colors">
                 <iconify-icon icon="boxicons:medical-kit" width="17" height="17"
                   class="text-surface-400"></iconify-icon>
               </button>
               <button onclick="alert('Lihat detail Ahmad Wijaya')"
-                class="w-8 h-8 flex items-center justify-center rounded-lg border border-surface-600  dark:border-surface-800 hover:bg-surface-100 dark:hover:bg-surface-800 transition-colors">
+                class="w-8 h-8 flex items-center justify-center rounded-lg border border-surface-200  dark:border-surface-800 hover:bg-surface-100 dark:hover:bg-surface-800 transition-colors">
                 <iconify-icon icon="carbon:view" width="17" height="17" class="text-surface-400"></iconify-icon>
               </button>
             </td>

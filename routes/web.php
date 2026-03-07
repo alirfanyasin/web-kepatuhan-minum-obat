@@ -35,7 +35,12 @@ Route::prefix('app')->group(function () {
         return view('pages.app.todolist-management');
     });
 
-    Route::get('/todolist-patient', function () {
+
+    Route::get('/todolist/{username}', function () {
         return view('pages.app.todolist-patient');
+    });
+
+    Route::get('/todolist-patient', function () {
+        return view('pages.app.todolist');
     });
 });
