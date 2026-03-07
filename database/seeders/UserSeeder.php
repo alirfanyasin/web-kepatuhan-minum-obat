@@ -17,6 +17,7 @@ class UserSeeder extends Seeder
             'name' => 'Admin',
             'email' => 'admin@gmail.com',
             'password' => bcrypt('password'),
+            'avatar' => 'https://ui-avatars.com/api/?name=Admin&background=random',
         ]);
         $admin->assignRole('admin');
 
@@ -24,6 +25,7 @@ class UserSeeder extends Seeder
             'name' => 'Dr. John Doe',
             'email' => 'doctor@gmail.com',
             'password' => bcrypt('password'),
+            'avatar' => 'https://ui-avatars.com/api/?name=Dr.+John+Doe&background=random',
         ]);
         $doctor->assignRole('doctor');
 
@@ -31,6 +33,7 @@ class UserSeeder extends Seeder
             'name' => 'Jane Doe',
             'email' => 'patient@gmail.com',
             'password' => bcrypt('password'),
+            'avatar' => 'https://ui-avatars.com/api/?name=Jane+Doe&background=random',
         ]);
         $patient->assignRole('patient');
     }
