@@ -57,12 +57,14 @@
       </button>
       <div class="dropdown-menu pl-12 pt-1 space-y-1">
         <a href="{{ url('/app/all-patients') }}"
-          class="block py-2 px-3 rounded-lg text-sm text-surface-600 dark:text-surface-400 hover:bg-surface-100 dark:hover:bg-surface-800 hover:text-medical-600 transition-colors">Semua Pasien</a>
+          class="block py-2 px-3 rounded-lg text-sm text-surface-600 dark:text-surface-400 hover:bg-surface-100 dark:hover:bg-surface-800 hover:text-medical-600 transition-colors">Semua
+          Pasien</a>
         {{-- <a href="#"
           class="block py-2 px-3 rounded-lg text-sm text-surface-600 dark:text-surface-400 hover:bg-surface-100 dark:hover:bg-surface-800 hover:text-medical-600 transition-colors">Medical
           Checkups</a> --}}
         <a href="{{ url('/app/todolist-management') }}"
-          class="block py-2 px-3 rounded-lg text-sm text-surface-600 dark:text-surface-400 hover:bg-surface-100 dark:hover:bg-surface-800 hover:text-medical-600 transition-colors">To-Do List</a>
+          class="block py-2 px-3 rounded-lg text-sm text-surface-600 dark:text-surface-400 hover:bg-surface-100 dark:hover:bg-surface-800 hover:text-medical-600 transition-colors">To-Do
+          List</a>
         {{-- <a href="#"
           class="block py-2 px-3 rounded-lg text-sm text-surface-600 dark:text-surface-400 hover:bg-surface-100 dark:hover:bg-surface-800 hover:text-medical-600 transition-colors">Patient
           Records</a> --}}
@@ -96,14 +98,16 @@
     </div> --}}
 
     <!-- Doctors -->
-    <a href="#"
-      class="sidebar-link flex items-center gap-3 px-4 py-3 rounded-xl hover:bg-surface-100 dark:hover:bg-surface-800 text-surface-600 dark:text-surface-400 font-medium transition-colors focus-ring">
-      <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-          d="M5.121 17.804A13.937 13.937 0 0112 16c2.5 0 4.847.655 6.879 1.804M15 10a3 3 0 11-6 0 3 3 0 016 0zm6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
-      </svg>
-      <span>Dokter</span>
-    </a>
+    @hasrole('doctor')
+      <a href="#"
+        class="sidebar-link flex items-center gap-3 px-4 py-3 rounded-xl hover:bg-surface-100 dark:hover:bg-surface-800 text-surface-600 dark:text-surface-400 font-medium transition-colors focus-ring">
+        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+            d="M5.121 17.804A13.937 13.937 0 0112 16c2.5 0 4.847.655 6.879 1.804M15 10a3 3 0 11-6 0 3 3 0 016 0zm6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+        </svg>
+        <span>Dokter</span>
+      </a>
+    @endhasrole
 
     <!-- Departments Dropdown -->
     {{-- <div class="dropdown">
@@ -157,7 +161,7 @@
     <div class="my-3 border-t border-surface-200 dark:border-surface-800"></div>
 
     <!-- Settings -->
-    <a href="#"
+    <a href="{{url('/app/settings')}}"
       class="sidebar-link flex items-center gap-3 px-4 py-3 rounded-xl hover:bg-surface-100 dark:hover:bg-surface-800 text-surface-600 dark:text-surface-400 font-medium transition-colors focus-ring">
       <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
@@ -170,15 +174,26 @@
 
   <!-- User Profile -->
   <div class="p-4 border-t border-surface-200 dark:border-surface-800 shrink-0">
-    <div class="flex items-center gap-3 p-3 rounded-xl bg-surface-50 dark:bg-surface-800">
-      <div
-        class="w-10 h-10 rounded-full bg-gradient-to-br from-medical-400 to-medical-600 flex items-center justify-center text-white font-bold">
-        DR
+    <div class="flex items-center justify-between p-3 rounded-xl bg-surface-50 dark:bg-surface-800">
+      <div class="flex gap-3 items-center">
+        <img src="{{ auth()->user()->avatar }}" alt="User Avatar"
+          class="w-10 h-10 rounded-full bg-gradient-to-br from-medical-400 to-medical-600 flex items-center justify-center text-white font-bold">
+        <div class="flex-1 min-w-0">
+          <p class="font-semibold text-sm truncate">
+
+            {{  auth()->user()->getRoleNames()->first() === 'doctor' ? 'Dr. ' : '' }}
+            
+            {{ auth()->user()->name }}</p>
+          <p class="text-xs text-surface-500 truncate capitalize">{{ auth()->user()->getRoleNames()->first() }}</p>
+        </div>
       </div>
-      <div class="flex-1 min-w-0">
-        <p class="font-semibold text-sm truncate">Dr. Rachel Kim</p>
-        <p class="text-xs text-surface-500 truncate">Chief Medical Officer</p>
-      </div>
+
+      <form action="{{ route('logout') }}" method="POST" class="inline-block text-red-500">
+        @csrf
+        <button class="submit">
+        <iconify-icon icon="material-symbols:logout-rounded" width="20" height="20"></iconify-icon>
+        </button>
+      </form>
     </div>
   </div>
 </aside>

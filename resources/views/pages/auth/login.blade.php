@@ -18,18 +18,25 @@
         </div>
 
         <!-- Login Form -->
-        <form onsubmit="handleLogin(event)" class="space-y-4">
+        <form action="{{ route('login.post') }}" class="space-y-4" method="POST">
+          @csrf
           <div>
             <label class="block text-sm font-medium mb-2">Email</label>
-            <input type="email" id="loginEmail" required
+            <input type="email" id="email" name="email"
               class="w-full px-4 py-3 rounded-xl bg-surface-50 dark:bg-surface-800 border border-surface-200 dark:border-surface-700 focus:border-medical-500 outline-none transition-colors"
               placeholder="email@example.com">
+            @error('email')
+              <small class="text-red-500">{{ $message }}</small>
+            @enderror
           </div>
           <div>
             <label class="block text-sm font-medium mb-2">Password</label>
-            <input type="password" id="loginPassword" required
+            <input type="password" id="password" name="password"
               class="w-full px-4 py-3 rounded-xl bg-surface-50 dark:bg-surface-800 border border-surface-200 dark:border-surface-700 focus:border-medical-500 outline-none transition-colors"
               placeholder="********">
+            @error('password')
+              <small class="text-red-500">{{ $message }}</small>
+            @enderror
           </div>
 
           {{-- <div>

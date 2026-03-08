@@ -17,32 +17,45 @@
           <p class="text-sm text-surface-500 mt-1">Patient Monitoring System</p>
         </div>
 
-        <!-- Login Form -->
-        <form class="space-y-4">
+        <!-- Register Form -->
+        <form class="space-y-4" action="{{ route('register.post') }}" method="POST">
+          @csrf
           <div>
-            <label class="block text-sm font-medium mb-2">Nama Lengkap</label>
-            <input type="text" id="name" required
+            <label id="name" class="block text-sm font-medium mb-2">Nama Lengkap</label>
+            <input type="text" id="name" name="name"
               class="w-full px-4 py-3 rounded-xl bg-surface-50 dark:bg-surface-800 border border-surface-200 dark:border-surface-700 focus:border-medical-500 outline-none transition-colors"
-              placeholder="John Doe">
+              placeholder="John Doe" value="{{ old('name') }}">
+            @error('name')
+              <small class="text-red-500 font-light">{{ $message }}</small>
+            @enderror
           </div>
           <div>
-            <label class="block text-sm font-medium mb-2">Email</label>
-            <input type="email" id="email" required
+            <label id="email" class="block text-sm font-medium mb-2">Email</label>
+            <input type="email" id="email" name="email"
               class="w-full px-4 py-3 rounded-xl bg-surface-50 dark:bg-surface-800 border border-surface-200 dark:border-surface-700 focus:border-medical-500 outline-none transition-colors"
-              placeholder="email@example.com">
+              placeholder="email@example.com" value="{{ old('email') }}">
+            @error('email')
+              <small class="text-red-500 font-light">{{ $message }}</small>
+            @enderror
           </div>
           <div>
-            <label class="block text-sm font-medium mb-2">Password</label>
-            <input type="password" id="loginPassword" required
+            <label id="password" class="block text-sm font-medium mb-2">Password</label>
+            <input type="password" id="password" name="password"
               class="w-full px-4 py-3 rounded-xl bg-surface-50 dark:bg-surface-800 border border-surface-200 dark:border-surface-700 focus:border-medical-500 outline-none transition-colors"
               placeholder="********">
+            @error('password')
+              <small class="text-red-500 font-light">{{ $message }}</small>
+            @enderror
           </div>
 
           <div>
-            <label class="block text-sm font-medium mb-2">Konfirmasi Password</label>
-            <input type="password" id="loginPassword" required
+            <label id="confirm_password" class="block text-sm font-medium mb-2">Konfirmasi Password</label>
+            <input type="password" name="password_confirmation" id="confirm_password"
               class="w-full px-4 py-3 rounded-xl bg-surface-50 dark:bg-surface-800 border border-surface-200 dark:border-surface-700 focus:border-medical-500 outline-none transition-colors"
               placeholder="********">
+            @error('password_confirmation')
+              <small class="text-red-500 font-light">{{ $message }}</small>
+            @enderror
           </div>
 
           <button type="submit"

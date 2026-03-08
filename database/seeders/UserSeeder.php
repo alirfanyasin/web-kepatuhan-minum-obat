@@ -17,23 +17,23 @@ class UserSeeder extends Seeder
             'name' => 'Admin',
             'email' => 'admin@gmail.com',
             'password' => bcrypt('password'),
-            'avatar' => 'https://ui-avatars.com/api/?name=Admin&background=random',
+            'avatar' => 'https://ui-avatars.com/api/?name=Admin&background=14b8a6&color=fff&size=128',
         ]);
         $admin->assignRole('admin');
 
         $doctor = User::create([
-            'name' => 'Dr. John Doe',
+            'name' => 'John Doe',
             'email' => 'doctor@gmail.com',
             'password' => bcrypt('password'),
-            'avatar' => 'https://ui-avatars.com/api/?name=Dr.+John+Doe&background=random',
+            'avatar' => 'https://ui-avatars.com/api/?name=Dr.+John+Doe&background=14b8a6&color=fff&size=128',
         ]);
         $doctor->assignRole('doctor');
 
         $patient = User::create([
-            'name' => 'Jane Doe',
+            'name' => 'Pasien',
             'email' => 'patient@gmail.com',
             'password' => bcrypt('password'),
-            'avatar' => 'https://ui-avatars.com/api/?name=Jane+Doe&background=random',
+            'avatar' => 'https://ui-avatars.com/api/?name=Jane+Doe&background=14b8a6&color=fff&size=128',
         ]);
         $patient->assignRole('patient');
     }
