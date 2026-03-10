@@ -36,5 +36,13 @@ class UserSeeder extends Seeder
             'avatar' => 'https://ui-avatars.com/api/?name=Jane+Doe&background=14b8a6&color=fff&size=128',
         ]);
         $patient->assignRole('patient');
+
+        $patient = User::create([
+            'name' => 'Irfan Yasin',
+            'email' => 'irfan@gmail.com',
+            'password' => bcrypt('password'),
+            'avatar' => 'https://ui-avatars.com/api/?name=Irfan+Yasin&background=14b8a6&color=fff&size=128',
+        ]);
+        $patient->assignRole('patient');
     }
 }

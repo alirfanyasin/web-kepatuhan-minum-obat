@@ -21,7 +21,7 @@
 
       {{-- Target  --}}
       <section
-        class="p-5 bg-white dark:bg-surface-900 rounded-2xl border border-surface-200 dark:border-surface-800 space-y-3 animate-slide-up">
+        class="p-5 hidden bg-white dark:bg-surface-900 rounded-2xl border border-surface-200 dark:border-surface-800 space-y-3 animate-slide-up">
         <div class="space-y-3">
           <div
             class="task-item task-card bg-white dark:bg-surface-900 rounded-2xl p-4 border border-surface-200 dark:border-surface-800 shadow-sm"
@@ -150,7 +150,7 @@
 
       {{-- Tambah --}}
       <section
-        class="p-5 hidden bg-white dark:bg-surface-900 rounded-2xl border border-surface-200 dark:border-surface-800 space-y-3 animate-slide-up">
+        class="p-5 bg-white dark:bg-surface-900 rounded-2xl border border-surface-200 dark:border-surface-800 space-y-3 animate-slide-up">
 
         <form action="" class="space-y-4">
           <input type="text" name="task" id="task"

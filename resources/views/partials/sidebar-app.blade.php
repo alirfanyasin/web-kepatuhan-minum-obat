@@ -31,7 +31,7 @@
   <!-- Navigation -->
   <nav class="flex-1 overflow-y-auto p-4 space-y-1">
     <!-- Dashboard -->
-    <a href="{{ url('/app/dashboard') }}"
+    <a href="{{ route('dashboard') }}"
       class="sidebar-link active flex items-center gap-3 px-4 py-3 rounded-xl bg-medical-500/10 text-medical-600 dark:text-medical-400 font-semibold">
       <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
@@ -56,13 +56,13 @@
         </svg>
       </button>
       <div class="dropdown-menu pl-12 pt-1 space-y-1">
-        <a href="{{ url('/app/all-patients') }}"
+        <a href="{{ route('patients.index') }}"
           class="block py-2 px-3 rounded-lg text-sm text-surface-600 dark:text-surface-400 hover:bg-surface-100 dark:hover:bg-surface-800 hover:text-medical-600 transition-colors">Semua
           Pasien</a>
         {{-- <a href="#"
           class="block py-2 px-3 rounded-lg text-sm text-surface-600 dark:text-surface-400 hover:bg-surface-100 dark:hover:bg-surface-800 hover:text-medical-600 transition-colors">Medical
           Checkups</a> --}}
-        <a href="{{ url('/app/todolist-management') }}"
+        <a href="{{ route('todolist-management') }}"
           class="block py-2 px-3 rounded-lg text-sm text-surface-600 dark:text-surface-400 hover:bg-surface-100 dark:hover:bg-surface-800 hover:text-medical-600 transition-colors">To-Do
           List</a>
         {{-- <a href="#"
@@ -161,7 +161,7 @@
     <div class="my-3 border-t border-surface-200 dark:border-surface-800"></div>
 
     <!-- Settings -->
-    <a href="{{url('/app/settings')}}"
+    <a href="{{ url('/app/settings') }}"
       class="sidebar-link flex items-center gap-3 px-4 py-3 rounded-xl hover:bg-surface-100 dark:hover:bg-surface-800 text-surface-600 dark:text-surface-400 font-medium transition-colors focus-ring">
       <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
@@ -181,8 +181,8 @@
         <div class="flex-1 min-w-0">
           <p class="font-semibold text-sm truncate">
 
-            {{  auth()->user()->getRoleNames()->first() === 'doctor' ? 'Dr. ' : '' }}
-            
+            {{ auth()->user()->getRoleNames()->first() === 'doctor' ? 'Dr. ' : '' }}
+
             {{ auth()->user()->name }}</p>
           <p class="text-xs text-surface-500 truncate capitalize">{{ auth()->user()->getRoleNames()->first() }}</p>
         </div>
@@ -191,7 +191,7 @@
       <form action="{{ route('logout') }}" method="POST" class="inline-block text-red-500">
         @csrf
         <button class="submit">
-        <iconify-icon icon="material-symbols:logout-rounded" width="20" height="20"></iconify-icon>
+          <iconify-icon icon="material-symbols:logout-rounded" width="20" height="20"></iconify-icon>
         </button>
       </form>
     </div>
