@@ -4,6 +4,7 @@ use App\Http\Controllers\Auth\AuthController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\MedicalCheckupController;
 use App\Http\Controllers\PatientController;
+use App\Http\Controllers\TodolistCategoryController;
 use App\Http\Controllers\TodolistController;
 use Illuminate\Support\Facades\Route;
 
@@ -38,9 +39,13 @@ Route::middleware('auth')->group(function () {
         Route::get('/patients/medical-checkup/{id}/edit', [MedicalCheckupController::class, 'edit'])->name('medical-checkup.edit');
         Route::put('/patients/medical-checkup/{id}/update', [MedicalCheckupController::class, 'update'])->name('medical-checkup.update');
         Route::delete('/patients/medical-checkup/{id}/destroy', [MedicalCheckupController::class, 'destroy'])->name('medical-checkup.destroy');
+
+        Route::post('/patients/todolist-category', [TodolistCategoryController::class, 'store'])->name('todolist-category.store');
+        Route::delete('/patients/todolist-category/{id}/destroy', [TodolistCategoryController::class, 'destroy'])->name('todolist-category.destroy');
         Route::get('/patients/todolist/{id}/management', [TodolistController::class, 'index'])->name('todolist-management');
-
-
+        Route::post('/patients/todolist/{id}/management/store', [TodolistController::class, 'store'])->name('todolist-management.store');
+        Route::post('/todo/{id}/toggle',  [TodolistController::class, 'toggle'])->name('todo.toggle');
+        Route::delete('/todo/{id}',       [TodolistController::class, 'destroy'])->name('todo.destroy');
 
 
         Route::get('/settings', function () {

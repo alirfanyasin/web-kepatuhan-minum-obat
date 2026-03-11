@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 
 class MedicalCheckup extends Model
 {
@@ -60,13 +61,14 @@ class MedicalCheckup extends Model
 
     ];
 
-    /**
-     * Get the user that owns the MedicalCheckup
-     *
-     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
-     */
+
     public function user(): BelongsTo
     {
         return $this->belongsTo(User::class);
+    }
+
+    public function todolist(): HasMany
+    {
+        return $this->hasMany(Todolist::class);
     }
 }

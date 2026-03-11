@@ -57,13 +57,13 @@ class User extends Authenticatable
     }
 
 
-    /**
-     * Get all of the medicalCheckup for the User
-     *
-     * @return \Illuminate\Database\Eloquent\Relations\HasMany
-     */
     public function medicalCheckup(): HasMany
     {
         return $this->hasMany(MedicalCheckup::class);
+    }
+
+    public function todolist(): HasMany
+    {
+        return $this->hasMany(Todolist::class);
     }
 }

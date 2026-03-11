@@ -147,7 +147,9 @@ class MedicalCheckupController extends Controller
             'polyphagia' => 'nullable|boolean',
             'polyuria' => 'nullable|boolean',
             'weight_loss' => 'nullable|boolean',
+            'status' => 'nullable',
         ]);
+
 
         $data->update($validated);
 

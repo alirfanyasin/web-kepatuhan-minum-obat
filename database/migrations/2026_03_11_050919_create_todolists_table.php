@@ -13,6 +13,13 @@ return new class extends Migration
     {
         Schema::create('todolists', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('todolist_category_id')->constrained('todolist_categories')->cascadeOnDelete();
+            $table->foreignId('medical_checkups_id')->constrained('medical_checkups')->cascadeOnDelete();
+            $table->foreignId('user_id')->constrained('users')->cascadeOnDelete();
+            $table->string('name');
+            $table->string('description');
+            $table->time('time');
+            $table->enum('status', ['pending', 'done'])->default('pending');
             $table->timestamps();
         });
     }

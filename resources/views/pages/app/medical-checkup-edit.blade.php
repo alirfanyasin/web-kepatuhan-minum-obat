@@ -761,6 +761,43 @@
           </div>
         </section>
 
+
+        <!-- Section 10: Status Perawatan -->
+        <section
+          class="section-card p-6 bg-white dark:bg-surface-900 rounded-2xl border border-surface-200 dark:border-surface-800 shadow-sm">
+          <div class="flex items-center gap-3 mb-6">
+            <div
+              class="w-10 h-10 rounded-xl bg-gradient-to-br from-medical-500 to-medical-600 flex items-center justify-center text-white font-bold">
+              9</div>
+            <div>
+              <h2 class="font-display text-xl font-bold text-surface-900 dark:text-white">Status Perawatan</h2>
+              <p class="text-sm text-surface-500 dark:text-surface-400">Atur status perawatan atau sembuh</p>
+            </div>
+          </div>
+
+          <div class="space-y-4">
+            <div class="p-4 rounded-xl bg-surface-50 dark:bg-surface-800/50">
+              <p class="text-sm font-semibold text-surface-700 dark:text-surface-300 mb-3">Apakah masih dalam perawatan?
+              </p>
+              <div class="flex gap-3">
+                <label
+                  class="radio-card flex-1 flex items-center gap-2 p-3 rounded-lg border border-surface-300 dark:border-surface-600 cursor-pointer">
+                  <input type="radio" name="status" {{ $data->status === 'treatment' ? 'checked' : '' }}
+                    value="1" class="w-4 h-4 text-medical-500">
+                  <span class="text-sm text-surface-700 dark:text-surface-300">Ya</span>
+                </label>
+                <label
+                  class="radio-card flex-1 flex items-center gap-2 p-3 rounded-lg border border-surface-300 dark:border-surface-600 cursor-pointer">
+                  <input type="radio" name="status" {{ $data->status === 'recovered' ? 'checked' : '' }}
+                    value="0" class="w-4 h-4 text-medical-500">
+                  <span class="text-sm text-surface-700 dark:text-surface-300">Tidak</span>
+                </label>
+              </div>
+            </div>
+
+          </div>
+        </section>
+
         <!-- Submit Button -->
 
         <button type="submit"
