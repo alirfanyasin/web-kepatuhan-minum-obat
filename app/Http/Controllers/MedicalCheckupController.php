@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\MedicalCheckup;
+use App\Models\Todolist;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
@@ -13,6 +14,7 @@ class MedicalCheckupController extends Controller
     {
         $dataUser = User::findOrFail($id);
         $dataMedicalCheckup = MedicalCheckup::where('user_id', $id)->orderBy('id', 'desc')->get();
+
         return view('pages.app.medical-checkup', compact('dataUser', 'dataMedicalCheckup'));
     }
 

@@ -22,13 +22,12 @@
         class="p-5 bg-white dark:bg-surface-900 rounded-2xl border border-surface-200 dark:border-surface-800 mb-2 animate-slide-up relative">
         <div class="">
           <h3 class="text-xl font-semibold">{{ $data->user->name ?? 'Name not available' }}</h3>
-          <p class="text-surface-400">{{ $data->code }}</p>
+          <p class="text-surface-400 mb-4">{{ $data->code }}</p>
 
-          <p class="mt-3">{{ $data->created_at->translatedFormat('d F Y H:i') }}</p>
 
           <div class="flex items-center justify-between">
 
-            <div class="flex items-center mt-4 gap-2">
+            <div class="flex items-center gap-2">
               <a href="{{ route('medical-checkup.edit', ['id' => $data->id]) }}"
                 class="w-10 h-10 flex items-center justify-center  rounded-lg dark:bg-surface-700 bg-surface-100">
                 <iconify-icon icon="boxicons:edit" width="24" height="24" class="text-surface-500"></iconify-icon>
@@ -51,12 +50,22 @@
               </a>
             </div>
 
-            <div>
-              <small>Progress 70%</small>
-              <div class="w-24 h-2 bg-surface-300 dark:bg-surface-600 rounded-full overflow-hidden">
-                <div class="h-full bg-medical-500 rounded-full" style="width: 70%"></div>
-              </div>
+            <div class="flex items-center gap-2">
+              <p class="px-2 py-1 rounded-md bg-surface-100 text-xs dark:bg-surface-800">
+                {{ $data->created_at->translatedFormat('d F Y') }}
+              </p>
+              -
+              <p class="px-2 py-1 rounded-md bg-surface-100 text-xs dark:bg-surface-800">
+                {{ $data->created_at->translatedFormat('H:i') }}
+              </p>
             </div>
+
+            {{-- <div>
+              <small>Progress {{ $targetPercent }}%</small>
+              <div class="w-24 h-2 bg-surface-300 dark:bg-surface-600 rounded-full overflow-hidden">
+                <div class="h-full bg-medical-500 rounded-full" style="width: {{ $targetPercent }}%"></div>
+              </div>
+            </div> --}}
 
           </div>
 
