@@ -13,6 +13,6 @@ class TodolistCategory extends Model
 
     public function todolist(): HasMany
     {
-        return $this->hasMany(Todolist::class);
+        return $this->hasMany(Todolist::class,  'todolist_category_id');
     }
 }

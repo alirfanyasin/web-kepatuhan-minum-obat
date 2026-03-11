@@ -783,13 +783,13 @@
                 <label
                   class="radio-card flex-1 flex items-center gap-2 p-3 rounded-lg border border-surface-300 dark:border-surface-600 cursor-pointer">
                   <input type="radio" name="status" {{ $data->status === 'treatment' ? 'checked' : '' }}
-                    value="1" class="w-4 h-4 text-medical-500">
+                    value="treatment" class="w-4 h-4 text-medical-500">
                   <span class="text-sm text-surface-700 dark:text-surface-300">Ya</span>
                 </label>
                 <label
                   class="radio-card flex-1 flex items-center gap-2 p-3 rounded-lg border border-surface-300 dark:border-surface-600 cursor-pointer">
                   <input type="radio" name="status" {{ $data->status === 'recovered' ? 'checked' : '' }}
-                    value="0" class="w-4 h-4 text-medical-500">
+                    value="recovered" class="w-4 h-4 text-medical-500">
                   <span class="text-sm text-surface-700 dark:text-surface-300">Tidak</span>
                 </label>
               </div>
