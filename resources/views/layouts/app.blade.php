@@ -390,6 +390,7 @@
     });
   </script>
 
+  @stack('js')
 
 </body>
 

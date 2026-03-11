@@ -34,6 +34,10 @@ Route::middleware('auth')->group(function () {
         Route::get('/patients', [PatientController::class, 'index'])->name('patients.index');
         Route::get('/patients/medical-checkup/{id}', [MedicalCheckupController::class, 'index'])->name('medical-checkup.index');
         Route::get('/patients/medical-checkup/{id}/create', [MedicalCheckupController::class, 'create'])->name('medical-checkup.create');
+        Route::post('/patients/medical-checkup/{id}/store', [MedicalCheckupController::class, 'store'])->name('medical-checkup.store');
+        Route::get('/patients/medical-checkup/{id}/edit', [MedicalCheckupController::class, 'edit'])->name('medical-checkup.edit');
+        Route::put('/patients/medical-checkup/{id}/update', [MedicalCheckupController::class, 'update'])->name('medical-checkup.update');
+        Route::delete('/patients/medical-checkup/{id}/destroy', [MedicalCheckupController::class, 'destroy'])->name('medical-checkup.destroy');
         Route::get('/patients/todolist/{id}/management', [TodolistController::class, 'index'])->name('todolist-management');
 
 

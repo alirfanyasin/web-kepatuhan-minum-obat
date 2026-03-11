@@ -22,12 +22,12 @@
         <thead class="bg-surface-50 dark:bg-surface-800/50 border-b border-surface-200 dark:border-surface-800">
           <tr>
             <th class="text-left px-6 py-4 text-xs font-semibold text-surface-500 uppercase tracking-wider">Pasien</th>
-            <th
+            {{-- <th
               class="text-left px-6 py-4 text-xs font-semibold text-surface-500 uppercase tracking-wider hidden md:table-cell">
-              ID</th>
+              NIK</th>
             <th
               class="text-left px-6 py-4 text-xs font-semibold text-surface-500 uppercase tracking-wider hidden lg:table-cell">
-              Kondisi</th>
+              Kondisi</th> --}}
             <th class="text-left px-6 py-4 text-xs font-semibold text-surface-500 uppercase tracking-wider">Status</th>
 
             <th
@@ -45,23 +45,48 @@
                     class="w-10 h-10 rounded-full bg-gradient-to-br from-medical-400 to-medical-600 flex items-center justify-center text-white font-bold">
                   <div>
                     <p class="font-semibold text-sm">{{ $patient->name }}</p>
-                    <p class="text-xs text-surface-500">{{ $patient->age ?? 0 }} Th, {{ $patient->gender ?? 'Laki-laki' }}
+                    @php
+                      $lastCheckup = $patient->medicalCheckup->sortByDesc('created_at')->first();
+                    @endphp
+                    <p class="text-xs text-surface-500">
+                      {{ $lastCheckup ? \Carbon\Carbon::parse($lastCheckup->birth_date)->age : '-' }} Th,
+                      {{ $lastCheckup ? ($lastCheckup->gender === 1 ? 'Laki-Laki' : 'Perempuan') : '-' }}
                     </p>
                   </div>
                 </div>
               </td>
-              <td class="px-6 py-4 text-sm hidden md:table-cell font-mono">P001</td>
-              <td class="px-6 py-4 text-sm hidden lg:table-cell">Hipertensi</td>
+              {{-- <td class="px-6 py-4 text-sm hidden md:table-cell font-mono">
+                -</td>
+              <td class="px-6 py-4 text-sm hidden lg:table-cell">Hipertensi</td> --}}
               <td class="px-6 py-4">
-                <span class="inline-flex px-2.5 py-1 rounded-full text-xs font-medium bg-green-100 text-green-800">
-                  Aktif
-                </span>
+                @if ($patient->medicalCheckup->isEmpty())
+                  <span class="inline-flex px-2.5 py-1 rounded-full text-xs font-medium bg-red-100 text-red-800">
+                    Belum Aktif
+                  </span>
+                @else
+                  @if ($patient->medicalCheckup->last()->status === 'recovered')
+                    <span class="inline-flex px-2.5 py-1 rounded-full text-xs font-medium bg-green-100 text-green-800">
+                      Sembuh
+                    </span>
+                  @else
+                    <span class="inline-flex px-2.5 py-1 rounded-full text-xs font-medium bg-yellow-100 text-yellow-800">
+                      Perawatan
+                    </span>
+                  @endif
+                @endif
               </td>
 
               <td class="px-6 py-4 hidden lg:table-cell">
-                <span class="inline-flex px-2.5 py-1 rounded-full text-xs font-medium bg-red-100 text-red-800">
-                  Belum Ada
-                </span>
+                @if ($patient->medicalCheckup->isEmpty())
+                  <span class="inline-flex px-2.5 py-1 rounded-full text-xs font-medium bg-red-100 text-red-800">
+                    Belum Ada
+                  </span>
+                @else
+                  <span class="inline-flex px-2.5 py-1 rounded-full text-xs font-medium bg-green-100 text-green-800">
+                    {{ $patient->medicalCheckup->last()->created_at->translatedFormat('d F Y') }} -
+                    {{ $patient->medicalCheckup->last()->created_at->translatedFormat('H:i') }}
+                  </span>
+                @endif
               </td>
               <td class="px-6 py-4 flex gap-2 justify-end">
                 <a href="{{ route('medical-checkup.index', ['id' => $patient->id]) }}"

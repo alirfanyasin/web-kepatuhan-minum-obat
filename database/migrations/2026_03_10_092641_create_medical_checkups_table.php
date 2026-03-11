@@ -71,6 +71,7 @@ return new class extends Migration
             $table->boolean('polyuria')->nullable();
             $table->boolean('weight_loss')->nullable();
 
+            $table->string('code')->nullable();
             $table->enum('status', ['treatment', 'recovered'])->default('treatment');
 
             $table->timestamps();

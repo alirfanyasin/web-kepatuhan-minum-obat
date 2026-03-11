@@ -19,7 +19,7 @@ class DatabaseSeeder extends Seeder
             RoleUserSeeder::class,
             UserSeeder::class,
 
-            MedicalCheckupSeeder::class,
+            // MedicalCheckupSeeder::class,
         ]);
     }
 }

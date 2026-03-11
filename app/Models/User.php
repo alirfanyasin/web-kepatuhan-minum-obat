@@ -49,6 +49,13 @@ class User extends Authenticatable
         ];
     }
 
+    public function hasActiveCheckup()
+    {
+        return $this->medicalCheckup()
+            ->where('status', 'treatment')
+            ->exists();
+    }
+
 
     /**
      * Get all of the medicalCheckup for the User
