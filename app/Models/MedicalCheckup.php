@@ -11,7 +11,7 @@ class MedicalCheckup extends Model
 
         'user_id',
 
-        'full_name',
+        // 'full_name',
         'birth_date',
         'gender',
         'nik',
@@ -54,7 +54,8 @@ class MedicalCheckup extends Model
         'polydipsia',
         'polyphagia',
         'polyuria',
-        'weight_loss'
+        'weight_loss',
+        'status'
 
     ];
 

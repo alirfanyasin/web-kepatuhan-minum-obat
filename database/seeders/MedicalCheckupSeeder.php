@@ -17,7 +17,7 @@ class MedicalCheckupSeeder extends Seeder
 
             [
                 'user_id' => 3,
-                'full_name' => 'Ahmad Fauzi',
+                // 'full_name' => 'Ahmad Fauzi',
                 'birth_date' => '1985-05-10',
                 'gender' => 1,
                 'nik' => '3578123456780001',
@@ -60,12 +60,13 @@ class MedicalCheckupSeeder extends Seeder
                 'polydipsia' => 0,
                 'polyphagia' => 0,
                 'polyuria' => 0,
-                'weight_loss' => 0
+                'weight_loss' => 0,
+                'status' => 'recovered'
             ],
 
             [
                 'user_id' => 3,
-                'full_name' => 'Siti Rahma',
+                // 'full_name' => 'Siti Rahma',
                 'birth_date' => '1990-03-12',
                 'gender' => 0,
                 'nik' => '3578123456780002',
@@ -108,12 +109,13 @@ class MedicalCheckupSeeder extends Seeder
                 'polydipsia' => 0,
                 'polyphagia' => 0,
                 'polyuria' => 0,
-                'weight_loss' => 0
+                'weight_loss' => 0,
+                'status' => 'treatment'
             ],
 
             [
                 'user_id' => 4,
-                'full_name' => 'Budi Santoso',
+                // 'full_name' => 'Budi Santoso',
                 'birth_date' => '1978-08-20',
                 'gender' => 1,
                 'nik' => '3578123456780003',
@@ -156,12 +158,13 @@ class MedicalCheckupSeeder extends Seeder
                 'polydipsia' => 1,
                 'polyphagia' => 1,
                 'polyuria' => 1,
-                'weight_loss' => 1
+                'weight_loss' => 1,
+                'status' => 'treatment'
             ],
 
             [
                 'user_id' => 4,
-                'full_name' => 'Dewi Lestari',
+                // 'full_name' => 'Dewi Lestari',
                 'birth_date' => '1995-11-01',
                 'gender' => 0,
                 'nik' => '3578123456780004',
@@ -204,12 +207,13 @@ class MedicalCheckupSeeder extends Seeder
                 'polydipsia' => 0,
                 'polyphagia' => 0,
                 'polyuria' => 0,
-                'weight_loss' => 0
+                'weight_loss' => 0,
+                'status' => 'recovered'
             ],
 
             [
                 'user_id' => 4,
-                'full_name' => 'Rudi Hartono',
+                // 'full_name' => 'Rudi Hartono',
                 'birth_date' => '1988-02-17',
                 'gender' => 1,
                 'nik' => '3578123456780005',
@@ -252,7 +256,8 @@ class MedicalCheckupSeeder extends Seeder
                 'polydipsia' => 0,
                 'polyphagia' => 0,
                 'polyuria' => 0,
-                'weight_loss' => 0
+                'weight_loss' => 0,
+                'status' => 'recovered'
             ],
 
         ];

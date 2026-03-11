@@ -17,7 +17,7 @@ return new class extends Migration
             $table->foreignId('user_id')->constrained()->cascadeOnDelete();
 
             // PATIENT IDENTITY
-            $table->string('full_name');
+            // $table->string('full_name');
             $table->date('birth_date');
             $table->tinyInteger('gender'); // 1 = male, 0 = female
             $table->string('nik', 20);
@@ -70,6 +70,8 @@ return new class extends Migration
             $table->boolean('polyphagia')->nullable();
             $table->boolean('polyuria')->nullable();
             $table->boolean('weight_loss')->nullable();
+
+            $table->enum('status', ['treatment', 'recovered'])->default('treatment');
 
             $table->timestamps();
         });

@@ -4,6 +4,7 @@ use App\Http\Controllers\Auth\AuthController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\MedicalCheckupController;
 use App\Http\Controllers\PatientController;
+use App\Http\Controllers\TodolistController;
 use Illuminate\Support\Facades\Route;
 
 // Unauthenticated Routes
@@ -27,22 +28,22 @@ Route::get('/', function () {
 // Authenticated Routes
 Route::middleware('auth')->group(function () {
     Route::prefix('app')->group(function () {
+
+        // For Doctor
         Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
         Route::get('/patients', [PatientController::class, 'index'])->name('patients.index');
-        Route::get('/patient/medical-checkup/{id}', [MedicalCheckupController::class, 'index'])->name('medical-checkup.index');
-        Route::get('/patient/medical-checkup/{id}/create', [MedicalCheckupController::class, 'create'])->name('medical-checkup.create');
+        Route::get('/patients/medical-checkup/{id}', [MedicalCheckupController::class, 'index'])->name('medical-checkup.index');
+        Route::get('/patients/medical-checkup/{id}/create', [MedicalCheckupController::class, 'create'])->name('medical-checkup.create');
+        Route::get('/patients/todolist/{id}/management', [TodolistController::class, 'index'])->name('todolist-management');
 
-        Route::get('/todolist-management', function () {
-            return view('pages.app.todolist-management');
-        })->name('todolist-management');
 
-        Route::get('/todolist/{username}', function () {
-            return view('pages.app.todolist-patient');
-        })->name('todolist-patient');
+
 
         Route::get('/settings', function () {
             return view('pages.app.settings');
         })->name('settings');
+
+        // Route::get('/todolist-management/{id}', [TodolistController::class, 'index'])->name('todolist-management');
 
         // Route::get('/todolist-patient', function () {
         //     return view('pages.app.todolist');
