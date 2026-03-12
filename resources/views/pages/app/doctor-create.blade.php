@@ -1,6 +1,8 @@
 @extends('layouts.app')
 @section('content')
-  <x-breadcrumb title="Pengaturan" sub-title="Data akun dan profile" />
+  <x-breadcrumb title="Tambah Dokter" sub-title="Tambah data dokter baru">
+
+  </x-breadcrumb>
 
   <div class="grid lg:grid-cols-2 grid-cols-1 gap-4">
     <section
@@ -31,52 +33,24 @@
         </div>
       @endif
 
-      {{-- Avatar --}}
-      <div class="flex items-center gap-4 mb-5">
-        <div
-          class="border-2 border-surface-200 dark:border-surface-600 rounded-full w-32 h-32 overflow-hidden flex-shrink-0">
-          <img
-            src="{{ auth()->user()->avatar ?? 'https://ui-avatars.com/api/?name=' . urlencode(auth()->user()->name) . '&background=14b8a6&color=fff&size=128' }}"
-            alt="Avatar" class="w-full h-full object-cover" id="avatarPreview">
-        </div>
 
-        <div class="flex flex-col gap-2">
-          {{-- Upload --}}
-          <label for="avatarInput"
-            class="px-4 cursor-pointer hover:bg-medical-500/20 text-sm bg-medical-500/10 text-medical-500 inline-block rounded-lg py-2 text-center">
-            Upload Foto
-          </label>
-
-          {{-- Hapus avatar --}}
-          <form action="{{ route('settings.delete-avatar') }}" method="POST">
-            @csrf
-            <button type="submit"
-              class="w-full px-4 hover:bg-red-500/20 text-sm bg-red-500/10 text-red-500 inline-block rounded-lg py-2">
-              Hapus Foto
-            </button>
-          </form>
-        </div>
-      </div>
 
       {{-- Form update profil --}}
-      <form action="{{ route('settings.update') }}" method="POST" enctype="multipart/form-data" class="space-y-3">
+      <form action="{{ route('doctor.store') }}" method="POST" class="space-y-3">
         @csrf
-
-        {{-- Input file avatar (tersembunyi, dipicu label di atas) --}}
-        <input type="file" name="avatar" id="avatarInput" accept="image/*" class="hidden">
 
         <div>
           <label for="name" class="font-semibold mb-1 block text-surface-500">Nama Lengkap</label>
           <input type="text" name="name" id="name" required
             class="w-full p-2 rounded-lg border @error('name') border-red-400 @else border-surface-300 dark:border-surface-700 @enderror focus:outline-none focus:ring-2 focus:ring-medical-400 focus:border-transparent dark:bg-surface-800 dark:text-white"
-            placeholder="John Doe" value="{{ old('name', auth()->user()->name) }}">
+            placeholder="John Doe">
         </div>
 
         <div>
           <label for="email" class="font-semibold mb-1 block text-surface-500">Email</label>
           <input type="email" name="email" id="email" required
             class="w-full p-2 rounded-lg border @error('email') border-red-400 @else border-surface-300 dark:border-surface-700 @enderror focus:outline-none focus:ring-2 focus:ring-medical-400 focus:border-transparent dark:bg-surface-800 dark:text-white"
-            placeholder="john@example.com" value="{{ old('email', auth()->user()->email) }}">
+            placeholder="john@example.com">
         </div>
 
         <div>
@@ -104,7 +78,7 @@
         <div class="flex justify-end pt-2">
           <button type="submit"
             class="px-5 py-2 bg-gradient-to-br from-medical-500 to-medical-600 text-white rounded-lg hover:opacity-90 transition-opacity">
-            Update Akun
+            Buat Akun
           </button>
         </div>
 
@@ -134,5 +108,4 @@
       }
     </script>
   @endpush
-
 @endsection
