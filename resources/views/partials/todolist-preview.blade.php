@@ -21,7 +21,7 @@
           <p class="text-medical-100 text-sm font-medium mb-1">Progress Hari Ini</p>
           <h2 class="text-3xl font-display font-bold mb-2" id="todayCountText">{{ $todayDone }} dari
             {{ $todayTotal }}</h2>
-          <p class="text-medical-100 text-sm">tugas telah diselesaikan</p>
+          {{-- <p class="text-medical-100 text-sm">tugas telah diselesaikan</p> --}}
           <p class="text-medical-100 text-sm" id="targetCountText">Target {{ $targetDone }} dari {{ $targetTotal }}
           </p>
         </div>

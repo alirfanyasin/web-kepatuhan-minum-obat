@@ -21,7 +21,7 @@
           <div>
             <p class="text-medical-100 text-sm font-medium mb-1">Progress Hari Ini</p>
             <h2 class="text-3xl font-display font-bold mb-2" id="progressText">3 dari 6</h2>
-            <p class="text-medical-100 text-sm">tugas telah diselesaikan</p>
+            {{-- <p class="text-medical-100 text-sm">tugas telah diselesaikan</p> --}}
           </div>
           <div class="relative">
             <svg class="progress-ring w-20 h-20" viewBox="0 0 36 36">
@@ -186,10 +186,10 @@
                             <button onclick="toggleTask(${task.id})" class="flex-shrink-0 mt-0.5 focus-ring rounded-lg">
                                 <div class="checkbox-custom w-7 h-7 rounded-lg border-2 ${task.completed ? 'bg-medical-500 border-medical-500' : 'border-surface-300 dark:border-surface-600 hover:border-medical-500'} flex items-center justify-center transition-all">
                                     ${task.completed ? `
-                                              <svg class="w-4 h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"/>
-                                              </svg>
-                                          ` : ''}
+                                                <svg class="w-4 h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"/>
+                                                </svg>
+                                            ` : ''}
                                 </div>
                             </button>
                             
