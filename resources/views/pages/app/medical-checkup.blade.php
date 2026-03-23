@@ -1,7 +1,7 @@
 @extends('layouts.app')
 @section('content')
   <x-breadcrumb title="Medical Checkup" sub-title="History hasil pemeriksaan">
-    @hasrole('doctor')
+    @hasrole('nakes')
       @if (!$dataUser->hasActiveCheckup())
         <a href="{{ route('medical-checkup.create', ['id' => $dataUser->id]) }}"
           class="w-10 h-10 flex items-center justify-center rounded-lg bg-medical-600 text-white hover:bg-medical-700">
@@ -23,7 +23,7 @@
           <div class="flex items-center justify-between">
 
             <div class="flex items-center gap-2">
-              @hasrole('doctor')
+              @hasrole('nakes')
                 <a href="{{ route('medical-checkup.edit', ['id' => $data->id]) }}"
                   class="w-10 h-10 flex items-center justify-center  rounded-lg dark:bg-surface-700 bg-surface-100">
                   <iconify-icon icon="boxicons:edit" width="24" height="24" class="text-surface-500"></iconify-icon>

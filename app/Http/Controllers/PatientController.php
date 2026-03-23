@@ -10,7 +10,7 @@ class PatientController extends Controller
 {
     public function index()
     {
-        $dataPatient =  User::role('patient')
+        $dataPatient =  User::role('pasien')
             ->with('medicalCheckup')
             ->orderBy('name', 'asc')
             ->get();

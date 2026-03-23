@@ -13,13 +13,13 @@ class UserSeeder extends Seeder
      */
     public function run(): void
     {
-        $admin = User::create([
-            'name' => 'Admin',
-            'email' => 'admin@gmail.com',
-            'password' => bcrypt('password'),
-            'avatar' => 'https://ui-avatars.com/api/?name=Admin&background=14b8a6&color=fff&size=128',
-        ]);
-        $admin->assignRole('admin');
+        // $admin = User::create([
+        //     'name' => 'Admin',
+        //     'email' => 'admin@gmail.com',
+        //     'password' => bcrypt('password'),
+        //     'avatar' => 'https://ui-avatars.com/api/?name=Admin&background=14b8a6&color=fff&size=128',
+        // ]);
+        // $admin->assignRole('admin');
 
         $doctor = User::create([
             'name' => 'John Doe',
@@ -27,7 +27,7 @@ class UserSeeder extends Seeder
             'password' => bcrypt('password'),
             'avatar' => 'https://ui-avatars.com/api/?name=Dr.+John+Doe&background=14b8a6&color=fff&size=128',
         ]);
-        $doctor->assignRole('doctor');
+        $doctor->assignRole('nakes');
 
         $patient = User::create([
             'name' => 'Pasien',
@@ -35,7 +35,7 @@ class UserSeeder extends Seeder
             'password' => bcrypt('password'),
             'avatar' => 'https://ui-avatars.com/api/?name=Jane+Doe&background=14b8a6&color=fff&size=128',
         ]);
-        $patient->assignRole('patient');
+        $patient->assignRole('pasien');
 
         $patient = User::create([
             'name' => 'Irfan Yasin',
@@ -43,6 +43,6 @@ class UserSeeder extends Seeder
             'password' => bcrypt('password'),
             'avatar' => 'https://ui-avatars.com/api/?name=Irfan+Yasin&background=14b8a6&color=fff&size=128',
         ]);
-        $patient->assignRole('patient');
+        $patient->assignRole('pasien');
     }
 }

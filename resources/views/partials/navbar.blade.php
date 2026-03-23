@@ -76,7 +76,7 @@
        <a href="#how-it-works"
          class="block px-4 py-2.5 rounded-lg text-sm font-medium text-surface-600 hover:bg-surface-100 dark:text-surface-300 dark:hover:bg-surface-800 transition-colors">Cara
          Kerja</a>
-       <a href="#testimonials"
+       <a href="{{ route('login') }}"
          class="block px-4 py-2.5 rounded-lg bg-medical-500 hover:bg-medical-600 text-white text-sm font-semibold text-surface-600 transition-all shadow-lg shadow-medical-500/25 hover:shadow-xl hover:shadow-medical-500/30 active:scale-[0.98]">Masuk</a>
      </div>
    </div>

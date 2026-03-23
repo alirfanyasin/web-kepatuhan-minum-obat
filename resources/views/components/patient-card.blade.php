@@ -13,7 +13,7 @@
      <iconify-icon icon="solar:user-linear" width="24" height="24"></iconify-icon>
      <div>
        <small class="font-semibold block">Dr. John Doe</small>
-       <small>Doctor</small>
+       <small>Nakes</small>
      </div>
    </div>
    <div>

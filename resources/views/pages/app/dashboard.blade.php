@@ -6,7 +6,7 @@
     <div class="flex flex-col md:flex-row md:items-end md:justify-between gap-2">
       <div>
         <p class="text-sm text-medical-600 dark:text-medical-400 font-medium mb-1">Selamat Pagi,
-          {{ auth()->user()->getRoleNames()->first() === 'doctor' ? 'Dr. ' : '' }}
+          {{ auth()->user()->getRoleNames()->first() === 'nakes' ? 'Dr. ' : '' }}
           {{ auth()->user()->name }}</p>
         <h1 class="font-display text-2xl lg:text-3xl font-bold tracking-tight">Hospital Dashboard</h1>
       </div>

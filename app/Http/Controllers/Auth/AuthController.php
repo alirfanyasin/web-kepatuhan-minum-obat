@@ -48,7 +48,7 @@ class AuthController extends Controller
         $data['avatar'] = 'https://ui-avatars.com/api/?name=' . urlencode($data['name']) . '&background=14b8a6&color=fff&size=128';
 
         $user = User::create($data);
-        $user->assignRole('patient');
+        $user->assignRole('pasien');
 
         Auth::login($user);
 

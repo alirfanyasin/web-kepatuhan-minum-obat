@@ -15,11 +15,11 @@ class DashboardController extends Controller
         $user = Auth::user();
 
         // Redirect ke dashboard sesuai role
-        if ($user->hasRole('patient')) {
+        if ($user->hasRole('pasien')) {
             return app(DashboardPatientController::class)->index();
         }
 
-        $dataPatient = User::role('patient')
+        $dataPatient = User::role('pasien')
             ->with('medicalCheckup')
             ->orderBy('name', 'asc')
             ->get();
@@ -36,7 +36,7 @@ class DashboardController extends Controller
             return $last && $last->status === 'recovered';
         })->count();
 
-        $totalDoctor = User::role('doctor')->count();
+        $totalDoctor = User::role('nakes')->count();
         $taskCategories = TodolistCategory::withCount('todolist')->get();
         $totalTasks = $taskCategories->sum('todolists_count');
 

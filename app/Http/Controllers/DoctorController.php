@@ -10,7 +10,7 @@ class DoctorController extends Controller
 {
     public function index()
     {
-        $doctors =  User::role('doctor')
+        $doctors =  User::role('nakes')
             ->orderBy('name', 'asc')
             ->get();
 
@@ -44,7 +44,7 @@ class DoctorController extends Controller
             'avatar'   => 'https://ui-avatars.com/api/?name=' . urlencode($request->name) . '&background=14b8a6&color=fff&size=128',
         ]);
 
-        $user->assignRole('doctor');
+        $user->assignRole('nakes');
 
         return redirect()->route('doctor.index')->with('success', 'Akun dokter berhasil dibuat.');
     }

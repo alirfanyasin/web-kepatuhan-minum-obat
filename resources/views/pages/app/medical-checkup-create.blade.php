@@ -701,6 +701,58 @@
               </div>
             </div>
 
+            <div class="p-4 rounded-xl bg-surface-50 dark:bg-surface-800/50">
+              <p class="text-sm font-semibold text-surface-700 dark:text-surface-300 mb-4">Gejala Hipertensi</p>
+              <div class="space-y-3">
+                <div class="flex items-center justify-between">
+                  <span class="text-sm text-surface-600 dark:text-surface-400">Sering haus (polidipsi)</span>
+                  <div class="flex gap-2">
+                    <label
+                      class="radio-card flex items-center gap-1 px-3 py-2 rounded-lg border border-surface-300 dark:border-surface-600 cursor-pointer text-xs">
+                      <input type="radio" name="polydipsia" value="1" class="w-3 h-3 text-medical-500">
+                      <span class="text-surface-700 dark:text-surface-300">Ya</span>
+                    </label>
+                    <label
+                      class="radio-card flex items-center gap-1 px-3 py-2 rounded-lg border border-surface-300 dark:border-surface-600 cursor-pointer text-xs">
+                      <input type="radio" name="polydipsia" value="0" class="w-3 h-3 text-medical-500">
+                      <span class="text-surface-700 dark:text-surface-300">Tidak</span>
+                    </label>
+                  </div>
+                </div>
+                <div class="flex items-center justify-between">
+                  <span class="text-sm text-surface-600 dark:text-surface-400">Sering lapar (polifagi)</span>
+                  <div class="flex gap-2">
+                    <label
+                      class="radio-card flex items-center gap-1 px-3 py-2 rounded-lg border border-surface-300 dark:border-surface-600 cursor-pointer text-xs">
+                      <input type="radio" name="polyphagia" value="1" class="w-3 h-3 text-medical-500">
+                      <span class="text-surface-700 dark:text-surface-300">Ya</span>
+                    </label>
+                    <label
+                      class="radio-card flex items-center gap-1 px-3 py-2 rounded-lg border border-surface-300 dark:border-surface-600 cursor-pointer text-xs">
+                      <input type="radio" name="polyphagia" value="0" class="w-3 h-3 text-medical-500">
+                      <span class="text-surface-700 dark:text-surface-300">Tidak</span>
+                    </label>
+                  </div>
+                </div>
+                <div class="flex items-center justify-between">
+                  <span class="text-sm text-surface-600 dark:text-surface-400">Sering kencing di malam hari
+                    (poliuri)</span>
+                  <div class="flex gap-2">
+                    <label
+                      class="radio-card flex items-center gap-1 px-3 py-2 rounded-lg border border-surface-300 dark:border-surface-600 cursor-pointer text-xs">
+                      <input type="radio" name="polyuria" value="1" class="w-3 h-3 text-medical-500">
+                      <span class="text-surface-700 dark:text-surface-300">Ya</span>
+                    </label>
+                    <label
+                      class="radio-card flex items-center gap-1 px-3 py-2 rounded-lg border border-surface-300 dark:border-surface-600 cursor-pointer text-xs">
+                      <input type="radio" name="polyuria" value="0" class="w-3 h-3 text-medical-500">
+                      <span class="text-surface-700 dark:text-surface-300">Tidak</span>
+                    </label>
+                  </div>
+                </div>
+              </div>
+            </div>
+
             <!-- Berat Badan -->
             <div class="p-4 rounded-xl bg-surface-50 dark:bg-surface-800/50">
               <p class="text-sm font-semibold text-surface-700 dark:text-surface-300 mb-3">Penurunan Berat Badan</p>

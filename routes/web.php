@@ -44,7 +44,7 @@ Route::middleware('auth')->group(function () {
         Route::post('/settings/update',        [SettingController::class, 'update'])->name('settings.update');
         Route::post('/settings/delete-avatar', [SettingController::class, 'deleteAvatar'])->name('settings.delete-avatar');
 
-        Route::group(['middleware' => ['role:doctor']], function () {
+        Route::group(['middleware' => ['role:nakes']], function () {
             Route::get('/patients', [PatientController::class, 'index'])->name('patients.index');
             Route::get('/patients/medical-checkup/{id}/create', [MedicalCheckupController::class, 'create'])->name('medical-checkup.create');
             Route::post('/patients/medical-checkup/{id}/store', [MedicalCheckupController::class, 'store'])->name('medical-checkup.store');

@@ -19,7 +19,7 @@
           </div>
 
           <h1 class="font-display text-4xl sm:text-5xl lg:text-6xl font-bold tracking-tight leading-tight mb-6">
-            Pantau Kesehatan
+            Pantau Minum Obat
             <span class="text-transparent bg-clip-text bg-gradient-to-r from-medical-500 to-medical-400">Lebih
               Mudah</span>
           </h1>
