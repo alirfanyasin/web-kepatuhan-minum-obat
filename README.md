@@ -8,7 +8,7 @@
 
 
 ## Instalation
-Clone Repository
+Clone Repository atau Download ZIP project ini
 ```sh
 git clone https://github.com/CODER-Telkom-University-Surabaya.git
 ```
