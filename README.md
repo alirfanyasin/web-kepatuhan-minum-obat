@@ -1,8 +1,9 @@
 ## Requirement
 - PHP 8.3
 - Web Server (Laragon/XAMPP)
-- Ngrok
-- Code Editor (Optional)
+- Composer
+- Ngrok (optional)
+- Code Editor (optional)
 
 
 
