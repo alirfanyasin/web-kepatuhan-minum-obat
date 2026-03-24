@@ -42,3 +42,21 @@ php artisan serve
 
 npm run dev
 ```
+
+
+## Akun Dummy untuk Login
+### Nakes
+```json
+'name' => 'John Doe',
+'email' => 'nakes@gmail.com',
+'password' => bcrypt('password'),
+```
+
+
+### Pasien
+```json
+'name' => 'Pasien',
+'email' => 'patient@gmail.com',
+'password' => bcrypt('password'),
+```
+
