@@ -23,7 +23,7 @@ class UserSeeder extends Seeder
 
         $doctor = User::create([
             'name' => 'John Doe',
-            'email' => 'doctor@gmail.com',
+            'email' => 'nakes@gmail.com',
             'password' => bcrypt('password'),
             'avatar' => 'https://ui-avatars.com/api/?name=Dr.+John+Doe&background=14b8a6&color=fff&size=128',
         ]);

@@ -18,11 +18,22 @@
         <div class="">
           <h3 class="text-xl font-semibold">{{ $data->user->name ?? 'Name not available' }}</h3>
           <p class="text-surface-400 mb-4">{{ $data->code }}</p>
+          <p class="text-surface-400 mb-4">{{ $data->diagnosis }}</p>
 
 
           <div class="flex items-center justify-between">
 
             <div class="flex items-center gap-2">
+              <a href="{{ route('medical-checkup.show', ['id' => $data->id]) }}"
+                class="w-10 h-10 flex items-center justify-center  rounded-lg dark:bg-blue-700 bg-blue-100">
+                <iconify-icon icon="mdi:show-outline" width="24" height="24" class="text-blue-500"></iconify-icon>
+              </a>
+
+              <a href="{{ route('todolist-management', ['id' => $data->id]) }}"
+                class="w-10 h-10 flex items-center justify-center  rounded-lg dark:bg-medical-700/30 bg-medical-100/60">
+                <iconify-icon icon="lucide:list-todo" width="24" height="24"
+                  class="text-medical-600"></iconify-icon>
+              </a>
               @hasrole('nakes')
                 <a href="{{ route('medical-checkup.edit', ['id' => $data->id]) }}"
                   class="w-10 h-10 flex items-center justify-center  rounded-lg dark:bg-surface-700 bg-surface-100">
@@ -39,12 +50,6 @@
                   </button>
                 </form>
               @endhasrole
-
-              <a href="{{ route('todolist-management', ['id' => $data->id]) }}"
-                class="w-10 h-10 flex items-center justify-center  rounded-lg dark:bg-medical-700/30 bg-medical-100/60">
-                <iconify-icon icon="lucide:list-todo" width="24" height="24"
-                  class="text-medical-600"></iconify-icon>
-              </a>
             </div>
 
             <div class="flex items-center gap-2">

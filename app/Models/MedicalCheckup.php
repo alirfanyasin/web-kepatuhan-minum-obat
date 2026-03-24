@@ -56,6 +56,13 @@ class MedicalCheckup extends Model
         'polyuria',
         'weight_loss',
 
+        'nausea_and_vomiting',
+        'headache',
+        'nosebleed',
+        'chest_pain',
+
+        'diagnosis',
+
         'code',
         'status'
 

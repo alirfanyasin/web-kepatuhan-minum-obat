@@ -71,6 +71,13 @@ return new class extends Migration
             $table->boolean('polyuria')->nullable();
             $table->boolean('weight_loss')->nullable();
 
+            $table->boolean('nausea_and_vomiting')->nullable();
+            $table->boolean('headache')->nullable();
+            $table->boolean('nosebleed')->nullable();
+            $table->boolean('chest_pain')->nullable();
+
+            $table->string('diagnosis');
+
             $table->string('code')->nullable();
             $table->enum('status', ['treatment', 'recovered'])->default('treatment');
 

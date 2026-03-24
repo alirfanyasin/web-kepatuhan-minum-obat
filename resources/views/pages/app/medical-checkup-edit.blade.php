@@ -738,6 +738,83 @@
               </div>
             </div>
 
+            {{-- Gejala Hipertensi --}}
+            <div class="p-4 rounded-xl bg-surface-50 dark:bg-surface-800/50">
+              <p class="text-sm font-semibold text-surface-700 dark:text-surface-300 mb-4">Gejala Hipertensi</p>
+              <div class="space-y-3">
+                <div class="flex items-center justify-between">
+                  <span class="text-sm text-surface-600 dark:text-surface-400">Mual dan Muntah</span>
+                  <div class="flex gap-2">
+                    <label
+                      class="radio-card flex items-center gap-1 px-3 py-2 rounded-lg border border-surface-300 dark:border-surface-600 cursor-pointer text-xs">
+                      <input type="radio" name="nausea_and_vomiting"
+                        {{ $data->nausea_and_vomiting === 1 ? 'checked' : '' }} value="1"
+                        class="w-3 h-3 text-medical-500">
+                      <span class="text-surface-700 dark:text-surface-300">Ya</span>
+                    </label>
+                    <label
+                      class="radio-card flex items-center gap-1 px-3 py-2 rounded-lg border border-surface-300 dark:border-surface-600 cursor-pointer text-xs">
+                      <input type="radio" name="nausea_and_vomiting"
+                        {{ $data->nausea_and_vomiting === 0 ? 'checked' : '' }} value="0"
+                        class="w-3 h-3 text-medical-500">
+                      <span class="text-surface-700 dark:text-surface-300">Tidak</span>
+                    </label>
+                  </div>
+                </div>
+                <div class="flex items-center justify-between">
+                  <span class="text-sm text-surface-600 dark:text-surface-400">Sakit Kepala</span>
+                  <div class="flex gap-2">
+                    <label
+                      class="radio-card flex items-center gap-1 px-3 py-2 rounded-lg border border-surface-300 dark:border-surface-600 cursor-pointer text-xs">
+                      <input type="radio" name="headache" {{ $data->headache === 1 ? 'checked' : '' }}
+                        value="1" class="w-3 h-3 text-medical-500">
+                      <span class="text-surface-700 dark:text-surface-300">Ya</span>
+                    </label>
+                    <label
+                      class="radio-card flex items-center gap-1 px-3 py-2 rounded-lg border border-surface-300 dark:border-surface-600 cursor-pointer text-xs">
+                      <input type="radio" name="headache" {{ $data->headache === 0 ? 'checked' : '' }}
+                        value="0" class="w-3 h-3 text-medical-500">
+                      <span class="text-surface-700 dark:text-surface-300">Tidak</span>
+                    </label>
+                  </div>
+                </div>
+                <div class="flex items-center justify-between">
+                  <span class="text-sm text-surface-600 dark:text-surface-400">Mimisan</span>
+                  <div class="flex gap-2">
+                    <label
+                      class="radio-card flex items-center gap-1 px-3 py-2 rounded-lg border border-surface-300 dark:border-surface-600 cursor-pointer text-xs">
+                      <input type="radio" name="nosebleed" {{ $data->nosebleed === 1 ? 'checked' : '' }}
+                        value="1" class="w-3 h-3 text-medical-500">
+                      <span class="text-surface-700 dark:text-surface-300">Ya</span>
+                    </label>
+                    <label
+                      class="radio-card flex items-center gap-1 px-3 py-2 rounded-lg border border-surface-300 dark:border-surface-600 cursor-pointer text-xs">
+                      <input type="radio" name="nosebleed" {{ $data->nosebleed === 0 ? 'checked' : '' }}
+                        value="0" class="w-3 h-3 text-medical-500">
+                      <span class="text-surface-700 dark:text-surface-300">Tidak</span>
+                    </label>
+                  </div>
+                </div>
+                <div class="flex items-center justify-between">
+                  <span class="text-sm text-surface-600 dark:text-surface-400">Nyeri Dada</span>
+                  <div class="flex gap-2">
+                    <label
+                      class="radio-card flex items-center gap-1 px-3 py-2 rounded-lg border border-surface-300 dark:border-surface-600 cursor-pointer text-xs">
+                      <input type="radio" name="chest_pain" {{ $data->chest_pain === 1 ? 'checked' : '' }}
+                        value="1" class="w-3 h-3 text-medical-500">
+                      <span class="text-surface-700 dark:text-surface-300">Ya</span>
+                    </label>
+                    <label
+                      class="radio-card flex items-center gap-1 px-3 py-2 rounded-lg border border-surface-300 dark:border-surface-600 cursor-pointer text-xs">
+                      <input type="radio" name="chest_pain" {{ $data->chest_pain === 0 ? 'checked' : '' }}
+                        value="0" class="w-3 h-3 text-medical-500">
+                      <span class="text-surface-700 dark:text-surface-300">Tidak</span>
+                    </label>
+                  </div>
+                </div>
+              </div>
+            </div>
+
             <!-- Berat Badan -->
             <div class="p-4 rounded-xl bg-surface-50 dark:bg-surface-800/50">
               <p class="text-sm font-semibold text-surface-700 dark:text-surface-300 mb-3">Penurunan Berat Badan</p>
@@ -761,14 +838,36 @@
           </div>
         </section>
 
-
-        <!-- Section 10: Status Perawatan -->
+        <!-- Section 10: Diagnosis -->
         <section
           class="section-card p-6 bg-white dark:bg-surface-900 rounded-2xl border border-surface-200 dark:border-surface-800 shadow-sm">
           <div class="flex items-center gap-3 mb-6">
             <div
               class="w-10 h-10 rounded-xl bg-gradient-to-br from-medical-500 to-medical-600 flex items-center justify-center text-white font-bold">
-              9</div>
+              10</div>
+            <div>
+              <h2 class="font-display text-xl font-bold text-surface-900 dark:text-white">Diagnosis</h2>
+              <p class="text-sm text-surface-500 dark:text-surface-400">Hasil diagnosis penyakit</p>
+            </div>
+          </div>
+
+          <div class="">
+            <div class="relative">
+              <input type="text" name="diagnosis"
+                class="input-field w-full p-4 rounded-xl border border-surface-300 dark:border-surface-700 focus:outline-none focus:ring-2 focus:ring-medical-400 focus:border-transparent dark:bg-surface-800 dark:text-white placeholder-surface-400 dark:placeholder-surface-500 pr-16"
+                placeholder="Tulis disini..." value="{{ $data->diagnosis }}">
+            </div>
+          </div>
+        </section>
+
+
+        <!-- Section 11: Status Perawatan -->
+        <section
+          class="section-card p-6 bg-white dark:bg-surface-900 rounded-2xl border border-surface-200 dark:border-surface-800 shadow-sm">
+          <div class="flex items-center gap-3 mb-6">
+            <div
+              class="w-10 h-10 rounded-xl bg-gradient-to-br from-medical-500 to-medical-600 flex items-center justify-center text-white font-bold">
+              11</div>
             <div>
               <h2 class="font-display text-xl font-bold text-surface-900 dark:text-white">Status Perawatan</h2>
               <p class="text-sm text-surface-500 dark:text-surface-400">Atur status perawatan atau sembuh</p>
@@ -799,7 +898,6 @@
         </section>
 
         <!-- Submit Button -->
-
         <button type="submit"
           class="flex-1 px-6 py-4 rounded-xl bg-gradient-to-r from-medical-500 to-medical-600 text-white font-semibold hover:from-medical-600 hover:to-medical-700 transition-all shadow-lg shadow-medical-500/25 focus:outline-none focus:ring-2 focus:ring-medical-400 focus:ring-offset-2">
           Update Data Pemeriksaan

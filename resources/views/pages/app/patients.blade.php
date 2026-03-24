@@ -23,6 +23,7 @@
           <tr>
             <th class="text-left px-6 py-4 text-xs font-semibold text-surface-500 uppercase tracking-wider">Pasien</th>
             <th class="text-left px-6 py-4 text-xs font-semibold text-surface-500 uppercase tracking-wider">Status</th>
+            <th class="text-left px-6 py-4 text-xs font-semibold text-surface-500 uppercase tracking-wider">Diagnosis</th>
             <th
               class="text-left px-6 py-4 text-xs font-semibold text-surface-500 uppercase tracking-wider hidden sm:table-cell">
               Medical Checkup</th>
@@ -65,6 +66,18 @@
                 @else
                   <span class="inline-flex px-2.5 py-1 rounded-full text-xs font-medium bg-yellow-100 text-yellow-800">
                     Perawatan
+                  </span>
+                @endif
+              </td>
+
+              <td class="px-6 py-4">
+                @if ($patient->medicalCheckup->isEmpty())
+                  <span class="inline-flex px-2.5 py-1 rounded-full text-xs font-medium bg-red-100 text-red-800">
+                    Belum Ada
+                  </span>
+                @else
+                  <span class="inline-flex px-2.5 py-1 rounded-full text-xs font-medium bg-blue-100 text-blue-800">
+                    {{ $patient->medicalCheckup->last()->diagnosis }}
                   </span>
                 @endif
               </td>

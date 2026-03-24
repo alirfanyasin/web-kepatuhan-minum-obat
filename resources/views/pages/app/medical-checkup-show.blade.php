@@ -14,7 +14,7 @@
           Formulir Pemeriksaan Kesehatan
         </div>
         <h1 class="font-display text-4xl md:text-5xl font-bold text-surface-900 dark:text-white mb-4">
-          Medical Check Up
+          Hasil Medical Check Up
         </h1>
         <p class="text-lg text-surface-600 dark:text-surface-300 max-w-2xl mx-auto">
           Skrining Kesehatan untuk Hipertensi dan Diabetes Mellitus
@@ -22,9 +22,10 @@
       </div>
 
       <!-- Form Container -->
-      <form id="medical-form" class="space-y-6" action="{{ route('medical-checkup.store', ['id' => $dataUser->id]) }}"
+      <form id="medical-form" class="space-y-6" action="{{ route('medical-checkup.update', ['id' => $data->id]) }}"
         method="POST">
         @csrf
+        @method('PUT')
 
         <!-- Section 1: Identitas Responden -->
         <section
@@ -42,17 +43,17 @@
           <div class="grid md:grid-cols-2 gap-4">
             <div class="md:col-span-2">
               <label class="block text-sm font-medium text-surface-700 dark:text-surface-300 mb-2">Nama Lengkap</label>
-              <input type="text"
+              <input type="text" disabled
                 class="input-field w-full p-4 rounded-xl border border-surface-300 dark:border-surface-700 focus:outline-none focus:ring-2 focus:ring-medical-400 focus:border-transparent dark:bg-surface-800 dark:text-white placeholder-surface-400 dark:placeholder-surface-500"
-                placeholder="Masukkan nama lengkap" value="{{ $dataUser->name }}" readonly>
+                placeholder="Masukkan nama lengkap" value="{{ $data->user->name }}" readonly>
             </div>
 
             <div>
               <label class="block text-sm font-medium text-surface-700 dark:text-surface-300 mb-2">Tanggal Lahir</label>
               <div class="relative">
-                <input type="date" name="birth_date" required
+                <input type="date" name="birth_date" required disabled
                   class="input-field w-full p-4 rounded-xl border border-surface-300 dark:border-surface-700 focus:outline-none focus:ring-2 focus:ring-medical-400 focus:border-transparent dark:bg-surface-800 dark:text-white placeholder-surface-400 dark:placeholder-surface-500"
-                  placeholder="Contoh: 45">
+                  placeholder="Contoh: 45"p value="{{ $data->birth_date }}">
               </div>
             </div>
 
@@ -61,13 +62,13 @@
               <div class="flex gap-3">
                 <label
                   class="radio-card flex-1 flex items-center gap-3 p-4 rounded-xl border border-surface-300 dark:border-surface-700 cursor-pointer">
-                  <input type="radio" name="gender" value="1"
+                  <input type="radio" name="gender" {{ $data->gender === 1 ? 'checked' : '' }} value="1" disabled
                     class="w-4 h-4 text-medical-500 focus:ring-medical-400" required>
                   <span class="text-surface-700 dark:text-surface-300">Laki-laki</span>
                 </label>
                 <label
                   class="radio-card flex-1 flex items-center gap-3 p-4 rounded-xl border border-surface-300 dark:border-surface-700 cursor-pointer">
-                  <input type="radio" name="gender" value="0"
+                  <input type="radio" name="gender" {{ $data->gender === 0 ? 'checked' : '' }} value="0" disabled
                     class="w-4 h-4 text-medical-500 focus:ring-medical-400">
                   <span class="text-surface-700 dark:text-surface-300">Perempuan</span>
                 </label>
@@ -79,7 +80,7 @@
               <div class="relative">
                 <input type="number" name="nik" required
                   class="input-field w-full p-4 rounded-xl border border-surface-300 dark:border-surface-700 focus:outline-none focus:ring-2 focus:ring-medical-400 focus:border-transparent dark:bg-surface-800 dark:text-white placeholder-surface-400 dark:placeholder-surface-500"
-                  placeholder="Contoh: 12345678901234567">
+                  placeholder="Contoh: 12345678901234567" value="{{ $data->nik }}" disabled>
               </div>
             </div>
 
@@ -88,7 +89,7 @@
               <div class="relative">
                 <input type="text" name="address" required
                   class="input-field w-full p-4 rounded-xl border border-surface-300 dark:border-surface-700 focus:outline-none focus:ring-2 focus:ring-medical-400 focus:border-transparent dark:bg-surface-800 dark:text-white placeholder-surface-400 dark:placeholder-surface-500"
-                  placeholder="Contoh: Jl. Merdeka No. 123, Jakarta">
+                  placeholder="Contoh: Jl. Merdeka No. 123, Jakarta" value="{{ $data->address }}" disabled>
               </div>
             </div>
           </div>
@@ -112,9 +113,9 @@
               <label class="block text-sm font-medium text-surface-700 dark:text-surface-300 mb-2">Tekanan Darah
                 Sistolik</label>
               <div class="relative">
-                <input type="number" name="systolic" min="60" max="250"
+                <input type="number" name="systolic" min="60" max="250" disabled
                   class="input-field w-full p-4 rounded-xl border border-surface-300 dark:border-surface-700 focus:outline-none focus:ring-2 focus:ring-medical-400 focus:border-transparent dark:bg-surface-800 dark:text-white placeholder-surface-400 dark:placeholder-surface-500 pr-16"
-                  placeholder="Contoh: 120">
+                  placeholder="Contoh: 120" value="{{ $data->systolic }}">
                 <span
                   class="absolute right-4 top-1/2 -translate-y-1/2 text-surface-400 dark:text-surface-500 text-sm">mmHg</span>
               </div>
@@ -125,9 +126,9 @@
               <label class="block text-sm font-medium text-surface-700 dark:text-surface-300 mb-2">Tekanan Darah
                 Diastolik</label>
               <div class="relative">
-                <input type="number" name="diastolic" min="40" max="150"
+                <input type="number" name="diastolic" min="40" max="150" disabled
                   class="input-field w-full p-4 rounded-xl border border-surface-300 dark:border-surface-700 focus:outline-none focus:ring-2 focus:ring-medical-400 focus:border-transparent dark:bg-surface-800 dark:text-white placeholder-surface-400 dark:placeholder-surface-500 pr-16"
-                  placeholder="Contoh: 80">
+                  placeholder="Contoh: 80" value="{{ $data->diastolic }}">
                 <span
                   class="absolute right-4 top-1/2 -translate-y-1/2 text-surface-400 dark:text-surface-500 text-sm">mmHg</span>
               </div>
@@ -154,8 +155,9 @@
               <label class="block text-sm font-medium text-surface-700 dark:text-surface-300 mb-2">Berat Badan</label>
               <div class="relative">
                 <input type="number" name="weight" id="berat_badan" min="20" max="300" step="0.1"
+                  disabled
                   class="input-field w-full p-4 rounded-xl border border-surface-300 dark:border-surface-700 focus:outline-none focus:ring-2 focus:ring-medical-400 focus:border-transparent dark:bg-surface-800 dark:text-white placeholder-surface-400 dark:placeholder-surface-500 pr-12"
-                  placeholder="Contoh: 70">
+                  placeholder="Contoh: 70" value="{{ $data->weight }}">
                 <span
                   class="absolute right-4 top-1/2 -translate-y-1/2 text-surface-400 dark:text-surface-500 text-sm">kg</span>
               </div>
@@ -164,9 +166,9 @@
             <div>
               <label class="block text-sm font-medium text-surface-700 dark:text-surface-300 mb-2">Tinggi Badan</label>
               <div class="relative">
-                <input type="number" name="height" id="tinggi_badan" min="100" max="250"
+                <input type="number" name="height" id="tinggi_badan" min="100" max="250" disabled
                   class="input-field w-full p-4 rounded-xl border border-surface-300 dark:border-surface-700 focus:outline-none focus:ring-2 focus:ring-medical-400 focus:border-transparent dark:bg-surface-800 dark:text-white placeholder-surface-400 dark:placeholder-surface-500 pr-12"
-                  placeholder="Contoh: 170">
+                  placeholder="Contoh: 170" value="{{ $data->height }}">
                 <span
                   class="absolute right-4 top-1/2 -translate-y-1/2 text-surface-400 dark:text-surface-500 text-sm">cm</span>
               </div>
@@ -178,7 +180,7 @@
               <div class="relative">
                 <input type="text" name="bmi" id="imt" readonly
                   class="input-field w-full p-4 rounded-xl border border-surface-300 dark:border-surface-700 bg-surface-100 dark:bg-surface-800 dark:text-white pr-16"
-                  placeholder="Otomatis">
+                  placeholder="Otomatis" value="{{ $data->bmi }}">
                 <span
                   class="absolute right-4 top-1/2 -translate-y-1/2 text-surface-400 dark:text-surface-500 text-sm">kg/m2</span>
               </div>
@@ -188,9 +190,9 @@
             <div>
               <label class="block text-sm font-medium text-surface-700 dark:text-surface-300 mb-2">Lingkar Perut</label>
               <div class="relative">
-                <input type="number" name="waist_circumference" min="40" max="200"
+                <input type="number" name="waist_circumference" min="40" max="200" disabled
                   class="input-field w-full p-4 rounded-xl border border-surface-300 dark:border-surface-700 focus:outline-none focus:ring-2 focus:ring-medical-400 focus:border-transparent dark:bg-surface-800 dark:text-white placeholder-surface-400 dark:placeholder-surface-500 pr-12"
-                  placeholder="Contoh: 90">
+                  placeholder="Contoh: 90" value="{{ $data->waist_circumference }}">
                 <span
                   class="absolute right-4 top-1/2 -translate-y-1/2 text-surface-400 dark:text-surface-500 text-sm">cm</span>
               </div>
@@ -218,9 +220,9 @@
               <label class="block text-sm font-medium text-surface-700 dark:text-surface-300 mb-2">Gula Darah
                 Puasa</label>
               <div class="relative">
-                <input type="number" name="fasting_glucose" min="30" max="600"
+                <input type="number" name="fasting_glucose" min="30" max="600" disabled
                   class="input-field w-full p-4 rounded-xl border border-surface-300 dark:border-surface-700 focus:outline-none focus:ring-2 focus:ring-medical-400 focus:border-transparent dark:bg-surface-800 dark:text-white placeholder-surface-400 dark:placeholder-surface-500 pr-16"
-                  placeholder="Contoh: 100">
+                  placeholder="Contoh: 100" value="{{ $data->fasting_glucose }}">
                 <span
                   class="absolute right-4 top-1/2 -translate-y-1/2 text-surface-400 dark:text-surface-500 text-sm">mg/dL</span>
               </div>
@@ -231,9 +233,9 @@
               <label class="block text-sm font-medium text-surface-700 dark:text-surface-300 mb-2">Gula Darah
                 Sewaktu</label>
               <div class="relative">
-                <input type="number" name="random_glucose" min="30" max="600"
+                <input type="number" name="random_glucose" min="30" max="600" disabled
                   class="input-field w-full p-4 rounded-xl border border-surface-300 dark:border-surface-700 focus:outline-none focus:ring-2 focus:ring-medical-400 focus:border-transparent dark:bg-surface-800 dark:text-white placeholder-surface-400 dark:placeholder-surface-500 pr-16"
-                  placeholder="Contoh: 140">
+                  placeholder="Contoh: 140" value="{{ $data->random_glucose }}">
                 <span
                   class="absolute right-4 top-1/2 -translate-y-1/2 text-surface-400 dark:text-surface-500 text-sm">mg/dL</span>
               </div>
@@ -244,9 +246,9 @@
               <label class="block text-sm font-medium text-surface-700 dark:text-surface-300 mb-2">HbA1c <span
                   class="text-surface-400">(opsional)</span></label>
               <div class="relative">
-                <input type="number" name="hba1c" min="3" max="15" step="0.1"
+                <input type="number" name="hba1c" min="3" max="15" step="0.1" disabled
                   class="input-field w-full p-4 rounded-xl border border-surface-300 dark:border-surface-700 focus:outline-none focus:ring-2 focus:ring-medical-400 focus:border-transparent dark:bg-surface-800 dark:text-white placeholder-surface-400 dark:placeholder-surface-500 pr-10"
-                  placeholder="Contoh: 5.5">
+                  placeholder="Contoh: 5.5" value="{{ $data->hba1c }}">
                 <span
                   class="absolute right-4 top-1/2 -translate-y-1/2 text-surface-400 dark:text-surface-500 text-sm">%</span>
               </div>
@@ -271,9 +273,9 @@
           <div class="max-w-sm">
             <label class="block text-sm font-medium text-surface-700 dark:text-surface-300 mb-2">Kolesterol Total</label>
             <div class="relative">
-              <input type="number" name="total_cholesterol" min="50" max="500"
+              <input type="number" name="total_cholesterol" min="50" max="500" disabled
                 class="input-field w-full p-4 rounded-xl border border-surface-300 dark:border-surface-700 focus:outline-none focus:ring-2 focus:ring-medical-400 focus:border-transparent dark:bg-surface-800 dark:text-white placeholder-surface-400 dark:placeholder-surface-500 pr-16"
-                placeholder="Contoh: 180">
+                placeholder="Contoh: 180" value="{{ $data->total_cholesterol }}">
               <span
                 class="absolute right-4 top-1/2 -translate-y-1/2 text-surface-400 dark:text-surface-500 text-sm">mg/dL</span>
             </div>
@@ -297,9 +299,9 @@
           <div class="max-w-sm">
             <label class="block text-sm font-medium text-surface-700 dark:text-surface-300 mb-2">Kreatinin</label>
             <div class="relative">
-              <input type="number" name="creatinine" min="0.1" max="20" step="0.01"
+              <input type="number" name="creatinine" min="0.1" max="20" step="0.01" disabled
                 class="input-field w-full p-4 rounded-xl border border-surface-300 dark:border-surface-700 focus:outline-none focus:ring-2 focus:ring-medical-400 focus:border-transparent dark:bg-surface-800 dark:text-white placeholder-surface-400 dark:placeholder-surface-500 pr-16"
-                placeholder="Contoh: 1.0">
+                placeholder="Contoh: 1.0" value="{{ $data->creatinine }}">
               <span
                 class="absolute right-4 top-1/2 -translate-y-1/2 text-surface-400 dark:text-surface-500 text-sm">mg/dL</span>
             </div>
@@ -329,12 +331,16 @@
               <div class="flex gap-3">
                 <label
                   class="radio-card flex-1 flex items-center gap-2 p-3 rounded-lg border border-surface-300 dark:border-surface-600 cursor-pointer">
-                  <input type="radio" name="history_hypertension" value="1" class="w-4 h-4 text-medical-500">
+                  <input type="radio" name="history_hypertension" disabled
+                    {{ $data->history_hypertension === 1 ? 'checked' : '' }} value="1"
+                    class="w-4 h-4 text-medical-500">
                   <span class="text-sm text-surface-700 dark:text-surface-300">Ya</span>
                 </label>
                 <label
                   class="radio-card flex-1 flex items-center gap-2 p-3 rounded-lg border border-surface-300 dark:border-surface-600 cursor-pointer">
-                  <input type="radio" name="history_hypertension" value="0" class="w-4 h-4 text-medical-500">
+                  <input type="radio" name="history_hypertension"
+                    {{ $data->history_hypertension === 0 ? 'checked' : '' }} value="0" disabled
+                    class="w-4 h-4 text-medical-500">
                   <span class="text-sm text-surface-700 dark:text-surface-300">Tidak</span>
                 </label>
               </div>
@@ -347,24 +353,24 @@
               <div class="flex gap-3 mb-3">
                 <label
                   class="radio-card flex-1 flex items-center gap-2 p-3 rounded-lg border border-surface-300 dark:border-surface-600 cursor-pointer">
-                  <input type="radio" name="history_diabetes" id="diabetes-ya" value="1"
-                    class="w-4 h-4 text-medical-500">
+                  <input type="radio" name="history_diabetes" {{ $data->history_diabetes === 1 ? 'checked' : '' }}
+                    disabled id="diabetes-ya" value="1" class="w-4 h-4 text-medical-500">
                   <span class="text-sm text-surface-700 dark:text-surface-300">Ya</span>
                 </label>
                 <label
                   class="radio-card flex-1 flex items-center gap-2 p-3 rounded-lg border border-surface-300 dark:border-surface-600 cursor-pointer">
-                  <input type="radio" name="history_diabetes" id="diabetes-tidak" value="0"
-                    class="w-4 h-4 text-medical-500">
+                  <input type="radio" name="history_diabetes" {{ $data->history_diabetes === 0 ? 'checked' : '' }}
+                    disabled id="diabetes-tidak" value="0" class="w-4 h-4 text-medical-500">
                   <span class="text-sm text-surface-700 dark:text-surface-300">Tidak</span>
                 </label>
               </div>
-              <div id="diabetes-tahun" class="hidden">
+              <div id="diabetes-tahun" class="">
                 <label class="block text-xs text-surface-500 dark:text-surface-400 mb-1">Jika Ya, sejak tahun berapa
                   didiagnosis?</label>
                 <div class="relative max-w-[150px]">
-                  <input type="number" name="diabetes_diagnosis_year" min="1950" max="2025"
+                  <input type="number" name="diabetes_diagnosis_year" disabled
                     class="input-field w-full p-3 rounded-lg border border-surface-300 dark:border-surface-600 focus:outline-none focus:ring-2 focus:ring-medical-400 focus:border-transparent dark:bg-surface-800 dark:text-white pr-16"
-                    placeholder="2020">
+                    placeholder="2020" value="{{ $data->diabetes_diagnosis_year }}">
                   <span
                     class="absolute right-3 top-1/2 -translate-y-1/2 text-surface-400 dark:text-surface-500 text-sm">tahun</span>
                 </div>
@@ -378,12 +384,14 @@
               <div class="flex gap-3">
                 <label
                   class="radio-card flex-1 flex items-center gap-2 p-3 rounded-lg border border-surface-300 dark:border-surface-600 cursor-pointer">
-                  <input type="radio" name="taking_medication" value="1" class="w-4 h-4 text-medical-500">
+                  <input type="radio" name="taking_medication" {{ $data->taking_medication === 1 ? 'checked' : '' }}
+                    disabled value="1" class="w-4 h-4 text-medical-500">
                   <span class="text-sm text-surface-700 dark:text-surface-300">Ya</span>
                 </label>
                 <label
                   class="radio-card flex-1 flex items-center gap-2 p-3 rounded-lg border border-surface-300 dark:border-surface-600 cursor-pointer">
-                  <input type="radio" name="taking_medication" value="0" class="w-4 h-4 text-medical-500">
+                  <input type="radio" name="taking_medication" {{ $data->taking_medication === 0 ? 'checked' : '' }}
+                    disabled value="0" class="w-4 h-4 text-medical-500">
                   <span class="text-sm text-surface-700 dark:text-surface-300">Tidak</span>
                 </label>
               </div>
@@ -396,12 +404,14 @@
               <div class="flex gap-3">
                 <label
                   class="radio-card flex-1 flex items-center gap-2 p-3 rounded-lg border border-surface-300 dark:border-surface-600 cursor-pointer">
-                  <input type="radio" name="routine_checkup" value="1" class="w-4 h-4 text-medical-500">
+                  <input type="radio" name="routine_checkup" {{ $data->routine_checkup === 1 ? 'checked' : '' }}
+                    disabled value="1" class="w-4 h-4 text-medical-500">
                   <span class="text-sm text-surface-700 dark:text-surface-300">Ya</span>
                 </label>
                 <label
                   class="radio-card flex-1 flex items-center gap-2 p-3 rounded-lg border border-surface-300 dark:border-surface-600 cursor-pointer">
-                  <input type="radio" name="routine_checkup" value="0" class="w-4 h-4 text-medical-500">
+                  <input type="radio" name="routine_checkup" {{ $data->routine_checkup === 0 ? 'checked' : '' }}
+                    disabled value="0" class="w-4 h-4 text-medical-500">
                   <span class="text-sm text-surface-700 dark:text-surface-300">Tidak</span>
                 </label>
               </div>
@@ -417,13 +427,15 @@
                   <div class="flex gap-2">
                     <label
                       class="radio-card flex items-center gap-1 px-3 py-2 rounded-lg border border-surface-300 dark:border-surface-600 cursor-pointer text-xs">
-                      <input type="radio" name="family_hypertension" value="1"
+                      <input type="radio" name="family_hypertension"
+                        {{ $data->family_hypertension === 1 ? 'checked' : '' }} value="1" disabled
                         class="w-3 h-3 text-medical-500">
                       <span class="text-surface-700 dark:text-surface-300">Ya</span>
                     </label>
                     <label
                       class="radio-card flex items-center gap-1 px-3 py-2 rounded-lg border border-surface-300 dark:border-surface-600 cursor-pointer text-xs">
-                      <input type="radio" name="family_hypertension" value="0"
+                      <input type="radio" name="family_hypertension"
+                        {{ $data->family_hypertension === 0 ? 'checked' : '' }} value="0" disabled
                         class="w-3 h-3 text-medical-500">
                       <span class="text-surface-700 dark:text-surface-300">Tidak</span>
                     </label>
@@ -434,12 +446,14 @@
                   <div class="flex gap-2">
                     <label
                       class="radio-card flex items-center gap-1 px-3 py-2 rounded-lg border border-surface-300 dark:border-surface-600 cursor-pointer text-xs">
-                      <input type="radio" name="family_diabetes" value="1" class="w-3 h-3 text-medical-500">
+                      <input type="radio" name="family_diabetes" {{ $data->family_diabetes === 1 ? 'checked' : '' }}
+                        disabled value="1" class="w-3 h-3 text-medical-500">
                       <span class="text-surface-700 dark:text-surface-300">Ya</span>
                     </label>
                     <label
                       class="radio-card flex items-center gap-1 px-3 py-2 rounded-lg border border-surface-300 dark:border-surface-600 cursor-pointer text-xs">
-                      <input type="radio" name="family_diabetes" value="0" class="w-3 h-3 text-medical-500">
+                      <input type="radio" name="family_diabetes" {{ $data->family_diabetes === 0 ? 'checked' : '' }}
+                        disabled value="0" class="w-3 h-3 text-medical-500">
                       <span class="text-surface-700 dark:text-surface-300">Tidak</span>
                     </label>
                   </div>
@@ -469,23 +483,23 @@
               <div class="flex gap-3 mb-3">
                 <label
                   class="radio-card flex-1 flex items-center gap-2 p-3 rounded-lg border border-surface-300 dark:border-surface-600 cursor-pointer">
-                  <input type="radio" name="smoking" id="merokok-ya" value="1"
-                    class="w-4 h-4 text-medical-500">
+                  <input type="radio" name="smoking" {{ $data->smoking === 1 ? 'checked' : '' }} id="merokok-ya"
+                    disabled value="1" class="w-4 h-4 text-medical-500">
                   <span class="text-sm text-surface-700 dark:text-surface-300">Ya</span>
                 </label>
                 <label
                   class="radio-card flex-1 flex items-center gap-2 p-3 rounded-lg border border-surface-300 dark:border-surface-600 cursor-pointer">
-                  <input type="radio" name="smoking" id="merokok-tidak" value="0"
-                    class="w-4 h-4 text-medical-500">
+                  <input type="radio" name="smoking"{{ $data->smoking === 0 ? 'checked' : '' }} id="merokok-tidak"
+                    disabled value="0" class="w-4 h-4 text-medical-500">
                   <span class="text-sm text-surface-700 dark:text-surface-300">Tidak</span>
                 </label>
               </div>
-              <div id="rokok-detail" class="hidden">
+              <div id="rokok-detail" class="">
                 <label class="block text-xs text-surface-500 dark:text-surface-400 mb-1">Jika Ya, berapa batang per
                   hari?</label>
-                <input type="number" name="cigarettes_per_day" min="1" max="100"
+                <input type="number" name="cigarettes_per_day" min="1" max="100" disabled
                   class="input-field w-full max-w-[150px] p-3 rounded-lg border border-surface-300 dark:border-surface-600 focus:outline-none focus:ring-2 focus:ring-medical-400 focus:border-transparent dark:bg-surface-800 dark:text-white"
-                  placeholder="10">
+                  placeholder="10" value="{{ $data->cigarettes_per_day }}">
               </div>
             </div>
 
@@ -496,12 +510,14 @@
               <div class="flex gap-3">
                 <label
                   class="radio-card flex-1 flex items-center gap-2 p-3 rounded-lg border border-surface-300 dark:border-surface-600 cursor-pointer">
-                  <input type="radio" name="high_salt_diet" value="1" class="w-4 h-4 text-medical-500">
+                  <input type="radio" name="high_salt_diet" {{ $data->high_salt_diet === 1 ? 'checked' : '' }}
+                    disabled value="1" class="w-4 h-4 text-medical-500">
                   <span class="text-sm text-surface-700 dark:text-surface-300">Ya</span>
                 </label>
                 <label
                   class="radio-card flex-1 flex items-center gap-2 p-3 rounded-lg border border-surface-300 dark:border-surface-600 cursor-pointer">
-                  <input type="radio" name="high_salt_diet" value="0" class="w-4 h-4 text-medical-500">
+                  <input type="radio" name="high_salt_diet" {{ $data->high_salt_diet === 0 ? 'checked' : '' }}
+                    disabled value="0" class="w-4 h-4 text-medical-500">
                   <span class="text-sm text-surface-700 dark:text-surface-300">Tidak</span>
                 </label>
               </div>
@@ -514,12 +530,14 @@
               <div class="flex gap-3">
                 <label
                   class="radio-card flex-1 flex items-center gap-2 p-3 rounded-lg border border-surface-300 dark:border-surface-600 cursor-pointer">
-                  <input type="radio" name="high_sugar_diet" value="1" class="w-4 h-4 text-medical-500">
+                  <input type="radio" name="high_sugar_diet" {{ $data->high_sugar_diet === 1 ? 'checked' : '' }}
+                    disabled value="1" class="w-4 h-4 text-medical-500">
                   <span class="text-sm text-surface-700 dark:text-surface-300">Ya</span>
                 </label>
                 <label
                   class="radio-card flex-1 flex items-center gap-2 p-3 rounded-lg border border-surface-300 dark:border-surface-600 cursor-pointer">
-                  <input type="radio" name="high_sugar_diet" value="0" class="w-4 h-4 text-medical-500">
+                  <input type="radio" name="high_sugar_diet" {{ $data->high_sugar_diet === 0 ? 'checked' : '' }}
+                    disabled value="0" class="w-4 h-4 text-medical-500">
                   <span class="text-sm text-surface-700 dark:text-surface-300">Tidak</span>
                 </label>
               </div>
@@ -532,12 +550,14 @@
               <div class="flex gap-3">
                 <label
                   class="radio-card flex-1 flex items-center gap-2 p-3 rounded-lg border border-surface-300 dark:border-surface-600 cursor-pointer">
-                  <input type="radio" name="lack_of_exercise" value="1" class="w-4 h-4 text-medical-500">
+                  <input type="radio" name="lack_of_exercise" {{ $data->lack_of_exercise === 1 ? 'checked' : '' }}
+                    disabled value="1" class="w-4 h-4 text-medical-500">
                   <span class="text-sm text-surface-700 dark:text-surface-300">Ya</span>
                 </label>
                 <label
                   class="radio-card flex-1 flex items-center gap-2 p-3 rounded-lg border border-surface-300 dark:border-surface-600 cursor-pointer">
-                  <input type="radio" name="lack_of_exercise" value="0" class="w-4 h-4 text-medical-500">
+                  <input type="radio" name="lack_of_exercise" {{ $data->lack_of_exercise === 0 ? 'checked' : '' }}
+                    disabled value="0" class="w-4 h-4 text-medical-500">
                   <span class="text-sm text-surface-700 dark:text-surface-300">Tidak</span>
                 </label>
               </div>
@@ -550,12 +570,14 @@
               <div class="flex gap-3">
                 <label
                   class="radio-card flex-1 flex items-center gap-2 p-3 rounded-lg border border-surface-300 dark:border-surface-600 cursor-pointer">
-                  <input type="radio" name="obesity" value="1" class="w-4 h-4 text-medical-500">
+                  <input type="radio" name="obesity" {{ $data->obesity === 1 ? 'checked' : '' }} value="1"
+                    disabled class="w-4 h-4 text-medical-500">
                   <span class="text-sm text-surface-700 dark:text-surface-300">Ya</span>
                 </label>
                 <label
                   class="radio-card flex-1 flex items-center gap-2 p-3 rounded-lg border border-surface-300 dark:border-surface-600 cursor-pointer">
-                  <input type="radio" name="obesity" value="0" class="w-4 h-4 text-medical-500">
+                  <input type="radio" name="obesity" {{ $data->obesity === 0 ? 'checked' : '' }} value="0"
+                    disabled class="w-4 h-4 text-medical-500">
                   <span class="text-sm text-surface-700 dark:text-surface-300">Tidak</span>
                 </label>
               </div>
@@ -568,12 +590,14 @@
               <div class="flex gap-3">
                 <label
                   class="radio-card flex-1 flex items-center gap-2 p-3 rounded-lg border border-surface-300 dark:border-surface-600 cursor-pointer">
-                  <input type="radio" name="stress" value="1" class="w-4 h-4 text-medical-500">
+                  <input type="radio" name="stress" {{ $data->stress === 1 ? 'checked' : '' }} value="1"
+                    disabled class="w-4 h-4 text-medical-500">
                   <span class="text-sm text-surface-700 dark:text-surface-300">Ya</span>
                 </label>
                 <label
                   class="radio-card flex-1 flex items-center gap-2 p-3 rounded-lg border border-surface-300 dark:border-surface-600 cursor-pointer">
-                  <input type="radio" name="stress" value="0" class="w-4 h-4 text-medical-500">
+                  <input type="radio" name="stress" {{ $data->stress === 0 ? 'checked' : '' }} value="0"
+                    disabled class="w-4 h-4 text-medical-500">
                   <span class="text-sm text-surface-700 dark:text-surface-300">Tidak</span>
                 </label>
               </div>
@@ -586,12 +610,14 @@
               <div class="flex gap-3">
                 <label
                   class="radio-card flex-1 flex items-center gap-2 p-3 rounded-lg border border-surface-300 dark:border-surface-600 cursor-pointer">
-                  <input type="radio" name="abdominal_obesity" value="1" class="w-4 h-4 text-medical-500">
+                  <input type="radio" name="abdominal_obesity" {{ $data->abdominal_obesity === 1 ? 'checked' : '' }}
+                    disabled value="1" class="w-4 h-4 text-medical-500">
                   <span class="text-sm text-surface-700 dark:text-surface-300">Ya</span>
                 </label>
                 <label
                   class="radio-card flex-1 flex items-center gap-2 p-3 rounded-lg border border-surface-300 dark:border-surface-600 cursor-pointer">
-                  <input type="radio" name="abdominal_obesity" value="0" class="w-4 h-4 text-medical-500">
+                  <input type="radio" name="abdominal_obesity" {{ $data->abdominal_obesity === 0 ? 'checked' : '' }}
+                    disabled value="0" class="w-4 h-4 text-medical-500">
                   <span class="text-sm text-surface-700 dark:text-surface-300">Tidak</span>
                 </label>
               </div>
@@ -603,12 +629,16 @@
               <div class="flex gap-3">
                 <label
                   class="radio-card flex-1 flex items-center gap-2 p-3 rounded-lg border border-surface-300 dark:border-surface-600 cursor-pointer">
-                  <input type="radio" name="alcohol_consumption" value="1" class="w-4 h-4 text-medical-500">
+                  <input type="radio" name="alcohol_consumption"
+                    {{ $data->alcohol_consumption === 1 ? 'checked' : '' }} value="1" disabled
+                    class="w-4 h-4 text-medical-500">
                   <span class="text-sm text-surface-700 dark:text-surface-300">Ya</span>
                 </label>
                 <label
                   class="radio-card flex-1 flex items-center gap-2 p-3 rounded-lg border border-surface-300 dark:border-surface-600 cursor-pointer">
-                  <input type="radio" name="alcohol_consumption" value="0" class="w-4 h-4 text-medical-500">
+                  <input type="radio" name="alcohol_consumption"
+                    {{ $data->alcohol_consumption === 0 ? 'checked' : '' }} value="0" disabled
+                    class="w-4 h-4 text-medical-500">
                   <span class="text-sm text-surface-700 dark:text-surface-300">Tidak</span>
                 </label>
               </div>
@@ -621,12 +651,14 @@
               <div class="flex gap-3">
                 <label
                   class="radio-card flex-1 flex items-center gap-2 p-3 rounded-lg border border-surface-300 dark:border-surface-600 cursor-pointer">
-                  <input type="radio" name="poor_sleep" value="1" class="w-4 h-4 text-medical-500">
+                  <input type="radio" name="poor_sleep" {{ $data->poor_sleep === 1 ? 'checked' : '' }} disabled
+                    value="1" class="w-4 h-4 text-medical-500">
                   <span class="text-sm text-surface-700 dark:text-surface-300">Ya</span>
                 </label>
                 <label
                   class="radio-card flex-1 flex items-center gap-2 p-3 rounded-lg border border-surface-300 dark:border-surface-600 cursor-pointer">
-                  <input type="radio" name="poor_sleep" value="0" class="w-4 h-4 text-medical-500">
+                  <input type="radio" name="poor_sleep" {{ $data->poor_sleep === 0 ? 'checked' : '' }} disabled
+                    value="0" class="w-4 h-4 text-medical-500">
                   <span class="text-sm text-surface-700 dark:text-surface-300">Tidak</span>
                 </label>
               </div>
@@ -657,12 +689,14 @@
                   <div class="flex gap-2">
                     <label
                       class="radio-card flex items-center gap-1 px-3 py-2 rounded-lg border border-surface-300 dark:border-surface-600 cursor-pointer text-xs">
-                      <input type="radio" name="polydipsia" value="1" class="w-3 h-3 text-medical-500">
+                      <input type="radio" name="polydipsia" {{ $data->polydipsia === 1 ? 'checked' : '' }} disabled
+                        value="1" class="w-3 h-3 text-medical-500">
                       <span class="text-surface-700 dark:text-surface-300">Ya</span>
                     </label>
                     <label
                       class="radio-card flex items-center gap-1 px-3 py-2 rounded-lg border border-surface-300 dark:border-surface-600 cursor-pointer text-xs">
-                      <input type="radio" name="polydipsia" value="0" class="w-3 h-3 text-medical-500">
+                      <input type="radio" name="polydipsia" {{ $data->polydipsia === 0 ? 'checked' : '' }} disabled
+                        value="0" class="w-3 h-3 text-medical-500">
                       <span class="text-surface-700 dark:text-surface-300">Tidak</span>
                     </label>
                   </div>
@@ -672,12 +706,14 @@
                   <div class="flex gap-2">
                     <label
                       class="radio-card flex items-center gap-1 px-3 py-2 rounded-lg border border-surface-300 dark:border-surface-600 cursor-pointer text-xs">
-                      <input type="radio" name="polyphagia" value="1" class="w-3 h-3 text-medical-500">
+                      <input type="radio" name="polyphagia" {{ $data->polyphagia === 1 ? 'checked' : '' }} disabled
+                        value="1" class="w-3 h-3 text-medical-500">
                       <span class="text-surface-700 dark:text-surface-300">Ya</span>
                     </label>
                     <label
                       class="radio-card flex items-center gap-1 px-3 py-2 rounded-lg border border-surface-300 dark:border-surface-600 cursor-pointer text-xs">
-                      <input type="radio" name="polyphagia" value="0" class="w-3 h-3 text-medical-500">
+                      <input type="radio" name="polyphagia" {{ $data->polyphagia === 0 ? 'checked' : '' }} disabled
+                        value="0" class="w-3 h-3 text-medical-500">
                       <span class="text-surface-700 dark:text-surface-300">Tidak</span>
                     </label>
                   </div>
@@ -688,12 +724,14 @@
                   <div class="flex gap-2">
                     <label
                       class="radio-card flex items-center gap-1 px-3 py-2 rounded-lg border border-surface-300 dark:border-surface-600 cursor-pointer text-xs">
-                      <input type="radio" name="polyuria" value="1" class="w-3 h-3 text-medical-500">
+                      <input type="radio" name="polyuria" {{ $data->polyuria === 1 ? 'checked' : '' }} disabled
+                        value="1" class="w-3 h-3 text-medical-500">
                       <span class="text-surface-700 dark:text-surface-300">Ya</span>
                     </label>
                     <label
                       class="radio-card flex items-center gap-1 px-3 py-2 rounded-lg border border-surface-300 dark:border-surface-600 cursor-pointer text-xs">
-                      <input type="radio" name="polyuria" value="0" class="w-3 h-3 text-medical-500">
+                      <input type="radio" name="polyuria" {{ $data->polyuria === 0 ? 'checked' : '' }} disabled
+                        value="0" class="w-3 h-3 text-medical-500">
                       <span class="text-surface-700 dark:text-surface-300">Tidak</span>
                     </label>
                   </div>
@@ -710,13 +748,15 @@
                   <div class="flex gap-2">
                     <label
                       class="radio-card flex items-center gap-1 px-3 py-2 rounded-lg border border-surface-300 dark:border-surface-600 cursor-pointer text-xs">
-                      <input type="radio" name="nausea_and_vomiting" value="1"
+                      <input type="radio" name="nausea_and_vomiting"
+                        {{ $data->nausea_and_vomiting === 1 ? 'checked' : '' }} value="1" disabled
                         class="w-3 h-3 text-medical-500">
                       <span class="text-surface-700 dark:text-surface-300">Ya</span>
                     </label>
                     <label
                       class="radio-card flex items-center gap-1 px-3 py-2 rounded-lg border border-surface-300 dark:border-surface-600 cursor-pointer text-xs">
-                      <input type="radio" name="nausea_and_vomiting" value="0"
+                      <input type="radio" name="nausea_and_vomiting"
+                        {{ $data->nausea_and_vomiting === 0 ? 'checked' : '' }} value="0" disabled
                         class="w-3 h-3 text-medical-500">
                       <span class="text-surface-700 dark:text-surface-300">Tidak</span>
                     </label>
@@ -727,12 +767,14 @@
                   <div class="flex gap-2">
                     <label
                       class="radio-card flex items-center gap-1 px-3 py-2 rounded-lg border border-surface-300 dark:border-surface-600 cursor-pointer text-xs">
-                      <input type="radio" name="headache" value="1" class="w-3 h-3 text-medical-500">
+                      <input type="radio" name="headache" {{ $data->headache === 1 ? 'checked' : '' }} disabled
+                        value="1" class="w-3 h-3 text-medical-500">
                       <span class="text-surface-700 dark:text-surface-300">Ya</span>
                     </label>
                     <label
                       class="radio-card flex items-center gap-1 px-3 py-2 rounded-lg border border-surface-300 dark:border-surface-600 cursor-pointer text-xs">
-                      <input type="radio" name="headache" value="0" class="w-3 h-3 text-medical-500">
+                      <input type="radio" name="headache" {{ $data->headache === 0 ? 'checked' : '' }} disabled
+                        value="0" class="w-3 h-3 text-medical-500">
                       <span class="text-surface-700 dark:text-surface-300">Tidak</span>
                     </label>
                   </div>
@@ -742,12 +784,14 @@
                   <div class="flex gap-2">
                     <label
                       class="radio-card flex items-center gap-1 px-3 py-2 rounded-lg border border-surface-300 dark:border-surface-600 cursor-pointer text-xs">
-                      <input type="radio" name="nosebleed" value="1" class="w-3 h-3 text-medical-500">
+                      <input type="radio" name="nosebleed" {{ $data->nosebleed === 1 ? 'checked' : '' }} disabled
+                        value="1" class="w-3 h-3 text-medical-500">
                       <span class="text-surface-700 dark:text-surface-300">Ya</span>
                     </label>
                     <label
                       class="radio-card flex items-center gap-1 px-3 py-2 rounded-lg border border-surface-300 dark:border-surface-600 cursor-pointer text-xs">
-                      <input type="radio" name="nosebleed" value="0" class="w-3 h-3 text-medical-500">
+                      <input type="radio" name="nosebleed" {{ $data->nosebleed === 0 ? 'checked' : '' }} disabled
+                        value="0" class="w-3 h-3 text-medical-500">
                       <span class="text-surface-700 dark:text-surface-300">Tidak</span>
                     </label>
                   </div>
@@ -757,12 +801,14 @@
                   <div class="flex gap-2">
                     <label
                       class="radio-card flex items-center gap-1 px-3 py-2 rounded-lg border border-surface-300 dark:border-surface-600 cursor-pointer text-xs">
-                      <input type="radio" name="chest_pain" value="1" class="w-3 h-3 text-medical-500">
+                      <input type="radio" name="chest_pain" {{ $data->chest_pain === 1 ? 'checked' : '' }} disabled
+                        value="1" class="w-3 h-3 text-medical-500">
                       <span class="text-surface-700 dark:text-surface-300">Ya</span>
                     </label>
                     <label
                       class="radio-card flex items-center gap-1 px-3 py-2 rounded-lg border border-surface-300 dark:border-surface-600 cursor-pointer text-xs">
-                      <input type="radio" name="chest_pain" value="0" class="w-3 h-3 text-medical-500">
+                      <input type="radio" name="chest_pain" {{ $data->chest_pain === 0 ? 'checked' : '' }} disabled
+                        value="0" class="w-3 h-3 text-medical-500">
                       <span class="text-surface-700 dark:text-surface-300">Tidak</span>
                     </label>
                   </div>
@@ -778,19 +824,20 @@
               <div class="flex gap-3">
                 <label
                   class="radio-card flex-1 flex items-center gap-2 p-3 rounded-lg border border-surface-300 dark:border-surface-600 cursor-pointer">
-                  <input type="radio" name="weight_loss" value="1" class="w-4 h-4 text-medical-500">
+                  <input type="radio" name="weight_loss" {{ $data->weight_loss === 1 ? 'checked' : '' }} disabled
+                    value="1" class="w-4 h-4 text-medical-500">
                   <span class="text-sm text-surface-700 dark:text-surface-300">Ya</span>
                 </label>
                 <label
                   class="radio-card flex-1 flex items-center gap-2 p-3 rounded-lg border border-surface-300 dark:border-surface-600 cursor-pointer">
-                  <input type="radio" name="weight_loss" value="0" class="w-4 h-4 text-medical-500">
+                  <input type="radio" name="weight_loss" {{ $data->weight_loss === 0 ? 'checked' : '' }} disabled
+                    value="0" class="w-4 h-4 text-medical-500">
                   <span class="text-sm text-surface-700 dark:text-surface-300">Tidak</span>
                 </label>
               </div>
             </div>
           </div>
         </section>
-
 
         <!-- Section 10: Diagnosis -->
         <section
@@ -809,19 +856,47 @@
             <div class="relative">
               <input type="text" name="diagnosis"
                 class="input-field w-full p-4 rounded-xl border border-surface-300 dark:border-surface-700 focus:outline-none focus:ring-2 focus:ring-medical-400 focus:border-transparent dark:bg-surface-800 dark:text-white placeholder-surface-400 dark:placeholder-surface-500 pr-16"
-                placeholder="Tulis disini...">
+                placeholder="Tulis disini..." value="{{ $data->diagnosis }}" disabled>
             </div>
           </div>
         </section>
 
 
+        <!-- Section 11: Status Perawatan -->
+        <section
+          class="section-card p-6 bg-white dark:bg-surface-900 rounded-2xl border border-surface-200 dark:border-surface-800 shadow-sm">
+          <div class="flex items-center gap-3 mb-6">
+            <div
+              class="w-10 h-10 rounded-xl bg-gradient-to-br from-medical-500 to-medical-600 flex items-center justify-center text-white font-bold">
+              11</div>
+            <div>
+              <h2 class="font-display text-xl font-bold text-surface-900 dark:text-white">Status Perawatan</h2>
+              <p class="text-sm text-surface-500 dark:text-surface-400">Atur status perawatan atau sembuh</p>
+            </div>
+          </div>
 
+          <div class="space-y-4">
+            <div class="p-4 rounded-xl bg-surface-50 dark:bg-surface-800/50">
+              <p class="text-sm font-semibold text-surface-700 dark:text-surface-300 mb-3">Apakah masih dalam perawatan?
+              </p>
+              <div class="flex gap-3">
+                <label
+                  class="radio-card flex-1 flex items-center gap-2 p-3 rounded-lg border border-surface-300 dark:border-surface-600 cursor-pointer">
+                  <input type="radio" name="status" {{ $data->status === 'treatment' ? 'checked' : '' }} disabled
+                    value="treatment" class="w-4 h-4 text-medical-500">
+                  <span class="text-sm text-surface-700 dark:text-surface-300">Ya</span>
+                </label>
+                <label
+                  class="radio-card flex-1 flex items-center gap-2 p-3 rounded-lg border border-surface-300 dark:border-surface-600 cursor-pointer">
+                  <input type="radio" name="status" {{ $data->status === 'recovered' ? 'checked' : '' }} disabled
+                    value="recovered" class="w-4 h-4 text-medical-500">
+                  <span class="text-sm text-surface-700 dark:text-surface-300">Tidak</span>
+                </label>
+              </div>
+            </div>
 
-        <!-- Submit Button -->
-        <button type="submit"
-          class="flex-1 px-6 py-4 rounded-xl bg-gradient-to-r from-medical-500 to-medical-600 text-white font-semibold hover:from-medical-600 hover:to-medical-700 transition-all shadow-lg shadow-medical-500/25 focus:outline-none focus:ring-2 focus:ring-medical-400 focus:ring-offset-2">
-          Kirim Data Pemeriksaan
-        </button>
+          </div>
+        </section>
       </form>
     </div>
   </main>
@@ -855,55 +930,6 @@
 
       berat.addEventListener("input", hitungBMI);
       tinggi.addEventListener("input", hitungBMI);
-
-
-      // ================= DIABETES =================
-
-      const diabetesRadio = document.querySelectorAll('input[name="history_diabetes"]');
-      const diabetesTahun = document.getElementById("diabetes-tahun");
-
-      diabetesRadio.forEach(radio => {
-
-        radio.addEventListener("change", function() {
-
-          if (this.value === "1") {
-
-            diabetesTahun.classList.remove("hidden");
-
-          } else {
-
-            diabetesTahun.classList.add("hidden");
-
-          }
-
-        });
-
-      });
-
-
-      // ================= MEROKOK =================
-
-      const rokokRadio = document.querySelectorAll('input[name="smoking"]');
-      const rokokDetail = document.getElementById("rokok-detail");
-
-      rokokRadio.forEach(radio => {
-
-        radio.addEventListener("change", function() {
-
-          if (this.value === "1") {
-
-            rokokDetail.classList.remove("hidden");
-
-          } else {
-
-            rokokDetail.classList.add("hidden");
-
-          }
-
-        });
-
-      });
-
     });
   </script>
 @endpush

@@ -76,6 +76,13 @@ class MedicalCheckupController extends Controller
             'polyphagia' => 'nullable|string',
             'polyuria' => 'nullable|string',
             'weight_loss' => 'nullable|string',
+
+            'nausea_and_vomiting' => 'nullable|string',
+            'headache' => 'nullable|string',
+            'nosebleed' => 'nullable|string',
+            'chest_pain' => 'nullable|string',
+
+            'diagnosis' => 'required|string',
         ]);
 
 
@@ -89,6 +96,12 @@ class MedicalCheckupController extends Controller
         return redirect()
             ->route('medical-checkup.index', $id)
             ->with('success', 'Data pemeriksaan berhasil disimpan.');
+    }
+
+    public function show($id)
+    {
+        $data = MedicalCheckup::findOrFail($id);
+        return view('pages.app.medical-checkup-show', compact('data'));
     }
 
     public function edit($id)
@@ -149,6 +162,14 @@ class MedicalCheckupController extends Controller
             'polyphagia' => 'nullable|boolean',
             'polyuria' => 'nullable|boolean',
             'weight_loss' => 'nullable|boolean',
+
+            'nausea_and_vomiting' => 'nullable|boolean',
+            'headache' => 'nullable|boolean',
+            'nosebleed' => 'nullable|boolean',
+            'chest_pain' => 'nullable|boolean',
+
+            'diagnosis' => 'nullable',
+
             'status' => 'nullable',
         ]);
 

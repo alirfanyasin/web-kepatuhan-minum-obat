@@ -1,11 +1,11 @@
 @extends('layouts.app')
 @section('content')
-  @hasrole('doctor')
+  @hasrole('nakes')
     <x-breadcrumb title="To-Do List Pasien" sub-title="Kelola tugas dan jadwal pasien" />
   @endhasrole
 
   <div class="grid lg:grid-cols-2 grid-cols-1 gap-4">
-    @hasrole('doctor')
+    @hasrole('nakes')
       <div>
 
 

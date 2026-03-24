@@ -75,7 +75,7 @@
         {{ $category->name }}
       </button>
     @endforeach
-    @hasrole('doctor')
+    @hasrole('nakes')
       <button onclick="filterTasks('target')"
         class="filter-btn px-4 py-2 rounded-xl text-sm font-medium whitespace-nowrap transition-all bg-surface-100 dark:bg-surface-800 text-surface-600 dark:text-surface-300 border border-surface-200 dark:border-surface-700 hover:border-medical-500">
         Target
