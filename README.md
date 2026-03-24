@@ -3,7 +3,7 @@
 - Web Server (Laragon/XAMPP)
 - Composer
 - Ngrok (optional)
-- Code Editor (optional)
+- Code Editor (optional) - Bisa menggunakan Visual Studio Code
 
 
 
